@@ -40,6 +40,8 @@
     "vite": "^6.0.3"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "marked": "^15.0.6"
   }
 }
