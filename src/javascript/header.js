@@ -1,6 +1,6 @@
 //Getting the JSON file header.json and its data.
 async function fetchHeaderData() {
-  const response = await fetch('./data/header.json');
+  const response = await fetch('/data/header.json');
   const headerData = await response.json();
   return headerData;
 }
@@ -77,13 +77,13 @@ function createNavigation(headerData) {
     //Using a switch that adds the href attribute depending on the link text. This can be updated when we get more webpages online.
     switch (link.text) {
       case 'Om oss':
-        menuLink.href = 'about.html';
+        menuLink.href = '/about';
         break;
       case 'Barnkalas':
-        menuLink.href = 'kids.html';
+        menuLink.href = '/kids';
         break;
       default:
-        menuLink.href = '#';
+        menuLink.href = '/';
     }
 
     menuLink.textContent = link.text;
