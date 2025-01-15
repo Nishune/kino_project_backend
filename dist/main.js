@@ -37,12 +37,15 @@ function T(t) {
     (h.className = 'overlay-logo'),
     l.appendChild(h),
     s.appendChild(l);
-  const E = document.createElement('ul');
-  (E.className = 'menu-links'),
-    t.header.hamburgerMenu.menuLinks.forEach((f) => {
+  const f = document.createElement('ul');
+  (f.className = 'menu-links'),
+    t.header.hamburgerMenu.menuLinks.forEach((E) => {
       const g = document.createElement('li'),
         y = document.createElement('a');
-      switch (f.text) {
+      switch (E.text) {
+        case 'Alla filmer':
+          y.href = '/movie';
+          break;
         case 'Om oss':
           y.href = '/about';
           break;
@@ -52,9 +55,9 @@ function T(t) {
         default:
           y.href = '/';
       }
-      (y.textContent = f.text), g.appendChild(y), E.appendChild(g);
+      (y.textContent = E.text), g.appendChild(y), f.appendChild(g);
     }),
-    s.appendChild(E),
+    s.appendChild(f),
     i.addEventListener('click', () => {
       (s.style.display = 'block'), e.classList.add('active');
     }),
@@ -64,7 +67,7 @@ function T(t) {
     e.addEventListener('click', () => {
       (s.style.display = 'none'), e.classList.remove('active');
     }),
-    a.appendChild(E.cloneNode(!0)),
+    a.appendChild(f.cloneNode(!0)),
     a.appendChild(i),
     u.appendChild(r),
     u.appendChild(a),
@@ -226,15 +229,15 @@ async function j() {
       l = document.querySelector('.info-2'),
       m = o.sections[1].modal,
       h = m[3].open,
-      E = document.createElement('h3'),
-      f = document.createElement('p');
-    (E.innerText = m[3].title), (f.innerText = m[3].text), (e.src = o.kinoImg.src), (e.alt = o.kinoImg.alt);
+      f = document.createElement('h3'),
+      E = document.createElement('p');
+    (f.innerText = m[3].title), (E.innerText = m[3].text), (e.src = o.kinoImg.src), (e.alt = o.kinoImg.alt);
     const g = document.createElement('div');
-    g.appendChild(E),
-      g.appendChild(f),
+    g.appendChild(f),
+      g.appendChild(E),
       g.setAttribute('class', 'open-div'),
-      E.setAttribute('class', 'desktop-open-title'),
-      f.setAttribute('class', 'desktop-open-paragraph'),
+      f.setAttribute('class', 'desktop-open-title'),
+      E.setAttribute('class', 'desktop-open-paragraph'),
       h.forEach((y) => {
         const C = document.createElement('div'),
           v = document.createElement('p'),
@@ -294,19 +297,19 @@ async function j() {
           ? c.open.forEach((l) => {
               const m = document.createElement('p'),
                 h = document.createElement('p'),
-                E = document.createElement('p'),
-                f = document.createElement('div');
-              f.setAttribute('class', 'open-times'),
+                f = document.createElement('p'),
+                E = document.createElement('div');
+              E.setAttribute('class', 'open-times'),
                 m.setAttribute('class', 'open-times-day'),
                 h.setAttribute('class', 'open-times-date'),
-                E.setAttribute('class', 'open-times-time'),
+                f.setAttribute('class', 'open-times-time'),
                 (m.innerText = l.dag),
                 (h.innerText = l.datum),
-                (E.innerText = l.tid),
-                f.appendChild(m),
-                f.appendChild(h),
-                f.appendChild(E),
-                s.appendChild(f),
+                (f.innerText = l.tid),
+                E.appendChild(m),
+                E.appendChild(h),
+                E.appendChild(f),
+                s.appendChild(E),
                 a.appendChild(s),
                 r.appendChild(a);
             })
@@ -337,8 +340,8 @@ async function j() {
             ? a.links.forEach((l) => {
                 const m = document.createElement('li');
                 if (l.icon) {
-                  const E = document.createElement('img');
-                  (E.src = l.icon), (E.alt = `${l.text || l.name} icon`), E.classList.add('footer-icon'), m.append(E);
+                  const f = document.createElement('img');
+                  (f.src = l.icon), (f.alt = `${l.text || l.name} icon`), f.classList.add('footer-icon'), m.append(f);
                 }
                 const h = document.createElement('a');
                 (h.href = l.url),
@@ -353,13 +356,13 @@ async function j() {
                 (m.textContent = l.street), e.appendChild(m);
                 const h = document.createElement('li');
                 (h.textContent = l.town), e.appendChild(h);
-                const E = document.createElement('li'),
-                  f = document.createElement('a');
-                (f.href = l.url),
-                  (f.textContent = l.findUs),
-                  f.classList.add('footer-afind'),
-                  E.appendChild(f),
-                  e.appendChild(E);
+                const f = document.createElement('li'),
+                  E = document.createElement('a');
+                (E.href = l.url),
+                  (E.textContent = l.findUs),
+                  E.classList.add('footer-afind'),
+                  f.appendChild(E),
+                  e.appendChild(f);
               }),
           i.append(e),
           d.append(i);
@@ -404,13 +407,13 @@ function P(t, o, u) {
   const m = document.querySelector('.section-3'),
     h = document.createElement('h3');
   h.textContent = t[2].section;
-  const E = document.createElement('p');
-  (E.textContent = t[2].content), m.appendChild(h), m.appendChild(E);
-  const f = document.querySelector('.section-4'),
+  const f = document.createElement('p');
+  (f.textContent = t[2].content), m.appendChild(h), m.appendChild(f);
+  const E = document.querySelector('.section-4'),
     g = document.createElement('h3');
   g.textContent = t[3].section;
   const y = document.createElement('p');
-  (y.textContent = t[3].content), f.appendChild(g), f.appendChild(y);
+  (y.textContent = t[3].content), E.appendChild(g), E.appendChild(y);
 }
 I();
 S();
