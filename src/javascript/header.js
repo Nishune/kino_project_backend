@@ -17,7 +17,7 @@ function createNavigation(headerData) {
   leftSection.className = 'nav-left';
 
   const logoLink = document.createElement('a');
-  logoLink.href = 'index.html';
+  logoLink.href = '/';
 
   const logo = document.createElement('img');
   logo.src = headerData.header.mainHeader.logo;
@@ -27,7 +27,7 @@ function createNavigation(headerData) {
   logoLink.appendChild(logo);
 
   const brandNameLink = document.createElement('a');
-  brandNameLink.href = 'index.html';
+  brandNameLink.href = '/';
 
   const brandName = document.createElement('span');
   brandName.className = 'brand-name';

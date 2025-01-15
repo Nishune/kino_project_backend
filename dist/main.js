@@ -8,11 +8,11 @@ function T(t) {
   const r = document.createElement('div');
   r.className = 'nav-left';
   const d = document.createElement('a');
-  d.href = 'index.html';
+  d.href = '/';
   const p = document.createElement('img');
   (p.src = t.header.mainHeader.logo), (p.alt = t.header.mainHeader.alt), (p.className = 'nav-logo'), d.appendChild(p);
   const n = document.createElement('a');
-  n.href = 'index.html';
+  n.href = '/';
   const c = document.createElement('span');
   (c.className = 'brand-name'),
     (c.textContent = t.header.mainHeader.brandName),
