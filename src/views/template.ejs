@@ -17,8 +17,47 @@
 
   <body>
     <header>
-      <div id="navigation-menu"></div>
+      <nav class="main-nav">
+        <div class="nav-left">
+          <a href="/">
+            <img src="<%= header.mainHeader.logo %>" alt="<%= header.mainHeader.alt %>" class="nav-logo">
+          </a>
+          <a href="/">
+            <span class="brand-name"><%= header.mainHeader.brandName %></span>
+          </a>
+        </div>
+        <div class="nav-right">
+          <ul class="menu-links">
+            <% header.hamburgerMenu.menuLinks.forEach(link => { %>
+              <li>
+                <a href="<%= getMenuLink(link.text) %>"><%= link.text %></a>
+              </li>
+            <% }); %>
+          </ul>
+          <button class="hamburger-btn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+
+      <div class="menu-overlay" style="display: none;">
+        <button class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="overlay-logo">
+          <img src="<%= header.hamburgerMenu.menuLogo %>" alt="<%= header.mainHeader.alt %>" class="overlay-logo">
+        </div>
+        <ul class="menu-links">
+          <% header.hamburgerMenu.menuLinks.forEach(link => { %>
+            <li>
+              <a href="<%= getMenuLink(link.text) %>"><%= link.text %></a>
+            </li>
+          <% }); %>
+        </ul>
+      </div>
+      <div class="overlay-blur"></div>
     </header>
+
     <%- body %>
 
     <footer class="footer-container"></footer>

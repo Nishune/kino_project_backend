@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "start": "node server.js"
+    "start": "node src/server/server.js"
   },
   "husky": {
     "hooks": {
