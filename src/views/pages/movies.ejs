@@ -5,10 +5,9 @@
 <section class="movie-container">
   <% movies.forEach(movie => { %>
     <div class="movie-card">
-      <a href="/movie/<%= movie.id %>">
+      <a href="/movies/<%= movie.id %>">
         <img src="<%= movie.attributes.image.url %>" alt="Bild för <%= movie.attributes.title %>">
         <h2><%= movie.attributes.title %></h2>
-        <p><%= movie.attributes.genre %></p>
       </a>
     </div>
   <% }) %>
