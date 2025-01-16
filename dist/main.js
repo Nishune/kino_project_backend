@@ -1,301 +1,240 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const o = document.querySelector('.hamburger-btn'),
-    t = document.querySelector('.close-btn'),
-    p = document.querySelector('.menu-overlay'),
-    l = document.querySelector('.overlay-blur');
-  o == null ||
-    o.addEventListener('click', () => {
-      (p.style.display = 'block'), l.classList.add('active');
+  const n = document.querySelector('.hamburger-btn'),
+    e = document.querySelector('.close-btn'),
+    r = document.querySelector('.menu-overlay'),
+    i = document.querySelector('.overlay-blur');
+  n == null ||
+    n.addEventListener('click', () => {
+      (r.style.display = 'block'), i.classList.add('active');
     }),
-    t == null ||
-      t.addEventListener('click', () => {
-        (p.style.display = 'none'), l.classList.remove('active');
+    e == null ||
+      e.addEventListener('click', () => {
+        (r.style.display = 'none'), i.classList.remove('active');
       }),
-    l == null ||
-      l.addEventListener('click', () => {
-        (p.style.display = 'none'), l.classList.remove('active');
+    i == null ||
+      i.addEventListener('click', () => {
+        (r.style.display = 'none'), i.classList.remove('active');
       });
 });
-const b = screen.width;
+const C = screen.width;
 async function T() {
   try {
-    const o = await fetch('/data/barnkalasEvent.json');
-    if (!o.ok) throw new Error('Could not fetch data');
-    const t = await o.json(),
-      p = document.querySelector('.article-party');
-    t.kalas.forEach((l) => {
+    const n = await fetch('/data/barnkalasEvent.json');
+    if (!n.ok) throw new Error('Could not fetch data');
+    const e = await n.json(),
+      r = document.querySelector('.article-party');
+    e.kalas.forEach((i) => {
       const c = document.createElement('div');
-      c.classList.add('party-div'), p.append(c);
-      const u = document.createElement('img');
-      u.classList.add('party-img'), (u.src = l.image), (u.alt = l.imageAlt), c.append(u);
-      const r = document.createElement('div');
-      r.classList.add('party-styling'), c.append(r);
-      const a = document.createElement('h2');
-      a.classList.add('party-header'), (a.innerText = l.titel), r.append(a);
-      const n = document.createElement('p');
-      n.classList.add('party-text'), (n.innerText = l.description), r.append(n);
-      const m = document.createElement('ol');
-      m.classList.add('party-list'),
-        r.append(m),
-        l.content.forEach((s) => {
-          const d = document.createElement('li');
-          d.classList.add('party-listItem'), (d.innerText = s), m.append(d);
+      c.classList.add('party-div'), r.append(c);
+      const m = document.createElement('img');
+      m.classList.add('party-img'), (m.src = i.image), (m.alt = i.imageAlt), c.append(m);
+      const d = document.createElement('div');
+      d.classList.add('party-styling'), c.append(d);
+      const s = document.createElement('h2');
+      s.classList.add('party-header'), (s.innerText = i.titel), d.append(s);
+      const o = document.createElement('p');
+      o.classList.add('party-text'), (o.innerText = i.description), d.append(o);
+      const l = document.createElement('ol');
+      l.classList.add('party-list'),
+        d.append(l),
+        i.content.forEach((h) => {
+          const p = document.createElement('li');
+          p.classList.add('party-listItem'), (p.innerText = h), l.append(p);
         });
-      const e = document.createElement('button');
-      e.classList.add('party-button'), (e.innerText = l.book), r.append(e);
+      const t = document.createElement('button');
+      t.classList.add('party-button'), (t.innerText = i.book), d.append(t);
     });
-  } catch (o) {
-    console.error(o);
-  }
-}
-async function k() {
-  try {
-    const o = await fetch('./data/barnkalasContent.json');
-    if (!o.ok) throw new Error('Could not fetch data');
-    const t = await o.json(),
-      p = document.querySelector('.div-hero'),
-      l = document.querySelector('.article-kids');
-    t.barnkalas.forEach((c) => {
-      const u = document.createElement('img');
-      u.classList.add('kids-hero'),
-        b < 1280 ? (u.src = c.imgHero) : (u.src = c.imgHeroDesktop),
-        (u.alt = c.imgAltHero),
-        p.append(u);
-      const r = document.createElement('img');
-      r.classList.add('kids-img'),
-        b < 1280 ? (r.src = c.imgTextMobile) : (r.src = c.imgTextDesktop),
-        (r.alt = c.imgAltMobile),
-        p.append(r);
-      const a = document.createElement('div');
-      a.classList.add('kids-div'), l.append(a);
-      const n = document.createElement('h2');
-      n.classList.add('kids-header'),
-        b < 1280 ? (n.innerText = c.titelMobile) : (n.innerText = c.titelDesktop),
-        a.append(n);
-      const m = document.createElement('button');
-      m.classList.add('kids-button'), (m.innerText = c.book), (m.type = 'button'), a.append(m);
-      const i = document.createElement('h1');
-      i.classList.add('kids-mainHeader'),
-        b < 1280 ? (i.innerText = c.mainTitelMobile) : (i.style.display = 'none'),
-        a.append(i);
-      const e = document.createElement('p');
-      e.classList.add('kids-text'),
-        b < 1280 ? (e.innerText = c.descriptionMobile) : (e.innerText = c.descriptionDesktop),
-        a.append(e);
-    });
-  } catch (o) {
-    console.error(o);
+  } catch (n) {
+    console.error(n);
   }
 }
 async function S() {
-  T(), k();
+  try {
+    const n = await fetch('./data/barnkalasContent.json');
+    if (!n.ok) throw new Error('Could not fetch data');
+    const e = await n.json(),
+      r = document.querySelector('.div-hero'),
+      i = document.querySelector('.article-kids');
+    e.barnkalas.forEach((c) => {
+      const m = document.createElement('img');
+      m.classList.add('kids-hero'),
+        C < 1280 ? (m.src = c.imgHero) : (m.src = c.imgHeroDesktop),
+        (m.alt = c.imgAltHero),
+        r.append(m);
+      const d = document.createElement('img');
+      d.classList.add('kids-img'),
+        C < 1280 ? (d.src = c.imgTextMobile) : (d.src = c.imgTextDesktop),
+        (d.alt = c.imgAltMobile),
+        r.append(d);
+      const s = document.createElement('div');
+      s.classList.add('kids-div'), i.append(s);
+      const o = document.createElement('h2');
+      o.classList.add('kids-header'),
+        C < 1280 ? (o.innerText = c.titelMobile) : (o.innerText = c.titelDesktop),
+        s.append(o);
+      const l = document.createElement('button');
+      l.classList.add('kids-button'), (l.innerText = c.book), (l.type = 'button'), s.append(l);
+      const a = document.createElement('h1');
+      a.classList.add('kids-mainHeader'),
+        C < 1280 ? (a.innerText = c.mainTitelMobile) : (a.style.display = 'none'),
+        s.append(a);
+      const t = document.createElement('p');
+      t.classList.add('kids-text'),
+        C < 1280 ? (t.innerText = c.descriptionMobile) : (t.innerText = c.descriptionDesktop),
+        s.append(t);
+    });
+  } catch (n) {
+    console.error(n);
+  }
 }
 async function q() {
+  T(), S();
+}
+async function L() {
   return await (await fetch('/data/infoModal.json')).json();
 }
-async function w() {
+async function A() {
   if (!(document.querySelector('.info') || document.querySelector('.information'))) return;
-  const t = await q(),
-    p = document.querySelector('.info-modal'),
-    l = document.querySelector('.info-modal-list'),
+  const e = await L(),
+    r = document.querySelector('.info-modal'),
+    i = document.querySelector('.info-modal-list'),
     c = document.querySelector('.info');
   if (c) {
-    const a = t.sections[0],
-      n = document.querySelector('.cinema-title'),
-      m = document.querySelector('.cinema-open'),
-      i = document.createElement('button');
-    (i.innerText = t.buttons[2].text), (n.innerText = a.title), (m.innerText = a.text);
-    const e = document.querySelector('.kino-img'),
-      s = document.querySelector('.info-2'),
-      d = t.sections[1].modal,
-      h = d[3].open,
-      E = document.createElement('h3'),
-      f = document.createElement('p');
-    (E.innerText = d[3].title), (f.innerText = d[3].text), (e.src = t.kinoImg.src), (e.alt = t.kinoImg.alt);
-    const y = document.createElement('div');
-    y.appendChild(E),
-      y.appendChild(f),
-      y.setAttribute('class', 'open-div'),
-      E.setAttribute('class', 'desktop-open-title'),
-      f.setAttribute('class', 'desktop-open-paragraph'),
-      h.forEach((x) => {
-        const C = document.createElement('div'),
+    const s = e.sections[0],
+      o = document.querySelector('.cinema-title'),
+      l = document.querySelector('.cinema-open'),
+      a = document.createElement('button');
+    (a.innerText = e.buttons[2].text), (o.innerText = s.title), (l.innerText = s.text);
+    const t = document.querySelector('.kino-img'),
+      h = document.querySelector('.info-2'),
+      p = e.sections[1].modal,
+      E = p[3].open,
+      y = document.createElement('h3'),
+      u = document.createElement('p');
+    (y.innerText = p[3].title), (u.innerText = p[3].text), (t.src = e.kinoImg.src), (t.alt = e.kinoImg.alt);
+    const b = document.createElement('div');
+    b.appendChild(y),
+      b.appendChild(u),
+      b.setAttribute('class', 'open-div'),
+      y.setAttribute('class', 'desktop-open-title'),
+      u.setAttribute('class', 'desktop-open-paragraph'),
+      E.forEach((f) => {
+        const x = document.createElement('div'),
           g = document.createElement('p'),
-          v = document.createElement('p'),
-          L = document.createElement('p');
-        C.setAttribute('class', 'open-times'),
+          k = document.createElement('p'),
+          v = document.createElement('p');
+        x.setAttribute('class', 'open-times'),
           g.setAttribute('class', 'open-times-day'),
-          v.setAttribute('class', 'open-times-date'),
-          L.setAttribute('class', 'open-times-time'),
-          (g.innerText = x.dag),
-          (v.innerText = x.datum),
-          (L.innerText = x.tid),
-          C.appendChild(g),
-          C.appendChild(v),
-          C.appendChild(L),
-          y.appendChild(C);
+          k.setAttribute('class', 'open-times-date'),
+          v.setAttribute('class', 'open-times-time'),
+          (g.innerText = f.dag),
+          (k.innerText = f.datum),
+          (v.innerText = f.tid),
+          x.appendChild(g),
+          x.appendChild(k),
+          x.appendChild(v),
+          b.appendChild(x);
       }),
-      s.prepend(y),
-      c.appendChild(s);
+      h.prepend(b),
+      c.appendChild(h);
   }
-  const u = t.sections[1].modal;
-  let r = 0;
-  u.forEach((a) => {
-    if (a.text == null) {
-      const n = document.createElement('p');
-      n.setAttribute('class', 'modal-title'), (n.innerText = a.title), p.prepend(n);
+  const m = e.sections[1].modal;
+  let d = 0;
+  m.forEach((s) => {
+    if (s.text == null) {
+      const o = document.createElement('p');
+      o.setAttribute('class', 'modal-title'), (o.innerText = s.title), r.prepend(o);
     } else {
-      const n = document.createElement('li'),
-        m = document.createElement('p'),
-        i = document.createElement('p'),
-        e = document.createElement('img');
-      n.setAttribute('class', 'modal-item-' + r),
-        r++,
-        m.setAttribute('class', 'modal-question'),
-        i.setAttribute('class', 'modal-answer'),
-        e.setAttribute('class', 'modal-open'),
-        (m.innerText = a.title),
-        (i.innerText = a.text),
-        (i.style.display = 'none'),
-        (e.src = t.buttons[0].openButton),
-        (e.alt = t.buttons[0].alt),
-        n.appendChild(e),
-        n.appendChild(m),
-        e.addEventListener('click', () => {
-          e.classList.toggle('open-button-clicked'),
-            e.className === 'modal-open open-button-clicked'
-              ? ((e.src = t.buttons[1].closeButton), (e.alt = t.buttons[1].alt), (i.style.display = ''))
-              : ((e.src = t.buttons[0].openButton), (e.alt = t.buttons[0].alt), (i.style.display = 'none'));
+      const o = document.createElement('li'),
+        l = document.createElement('p'),
+        a = document.createElement('p'),
+        t = document.createElement('img');
+      o.setAttribute('class', 'modal-item-' + d),
+        d++,
+        l.setAttribute('class', 'modal-question'),
+        a.setAttribute('class', 'modal-answer'),
+        t.setAttribute('class', 'modal-open'),
+        (l.innerText = s.title),
+        (a.innerText = s.text),
+        (a.style.display = 'none'),
+        (t.src = e.buttons[0].openButton),
+        (t.alt = e.buttons[0].alt),
+        o.appendChild(t),
+        o.appendChild(l),
+        t.addEventListener('click', () => {
+          t.classList.toggle('open-button-clicked'),
+            t.className === 'modal-open open-button-clicked'
+              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (a.style.display = ''))
+              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (a.style.display = 'none'));
         }),
-        m.addEventListener('click', () => {
-          e.classList.toggle('open-button-clicked'),
-            e.className === 'modal-open open-button-clicked'
-              ? ((e.src = t.buttons[1].closeButton), (e.alt = t.buttons[1].alt), (i.style.display = ''))
-              : ((e.src = t.buttons[0].openButton), (e.alt = t.buttons[0].alt), (i.style.display = 'none'));
+        l.addEventListener('click', () => {
+          t.classList.toggle('open-button-clicked'),
+            t.className === 'modal-open open-button-clicked'
+              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (a.style.display = ''))
+              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (a.style.display = 'none'));
         }),
-        'open' in a
-          ? a.open.forEach((s) => {
-              const d = document.createElement('p'),
-                h = document.createElement('p'),
+        'open' in s
+          ? s.open.forEach((h) => {
+              const p = document.createElement('p'),
                 E = document.createElement('p'),
-                f = document.createElement('div');
-              f.setAttribute('class', 'open-times'),
-                d.setAttribute('class', 'open-times-day'),
-                h.setAttribute('class', 'open-times-date'),
-                E.setAttribute('class', 'open-times-time'),
-                (d.innerText = s.dag),
-                (h.innerText = s.datum),
-                (E.innerText = s.tid),
-                f.appendChild(d),
-                f.appendChild(h),
-                f.appendChild(E),
-                i.appendChild(f),
-                n.appendChild(i),
-                l.appendChild(n);
+                y = document.createElement('p'),
+                u = document.createElement('div');
+              u.setAttribute('class', 'open-times'),
+                p.setAttribute('class', 'open-times-day'),
+                E.setAttribute('class', 'open-times-date'),
+                y.setAttribute('class', 'open-times-time'),
+                (p.innerText = h.dag),
+                (E.innerText = h.datum),
+                (y.innerText = h.tid),
+                u.appendChild(p),
+                u.appendChild(E),
+                u.appendChild(y),
+                a.appendChild(u),
+                o.appendChild(a),
+                i.appendChild(o);
             })
-          : (n.appendChild(i), l.appendChild(n));
+          : (o.appendChild(a), i.appendChild(o));
     }
   });
 }
-(async function () {
-  try {
-    const p = await (await fetch('/data/footer.json')).json(),
-      l = document.querySelector('.footer-container'),
-      c = document.createElement('div');
-    c.classList.add('sections-container'),
-      p.footer.sections.forEach((n) => {
-        const m = document.createElement('section');
-        m.classList.add('footer-section');
-        const i = document.createElement('h4');
-        (i.textContent = n.title), m.append(i);
-        const e = document.createElement('ul');
-        n.contact
-          ? n.contact.forEach((s) => {
-              const d = document.createElement('li');
-              (d.textContent = `E-post: ${s.mail}`), e.append(d);
-              const h = document.createElement('li');
-              (h.textContent = `Telefonnummer: ${s.phoneNumber}`), e.append(h);
-            })
-          : n.links
-            ? n.links.forEach((s) => {
-                const d = document.createElement('li');
-                if (s.icon) {
-                  const E = document.createElement('img');
-                  (E.src = s.icon), (E.alt = `${s.text || s.name} icon`), E.classList.add('footer-icon'), d.append(E);
-                }
-                const h = document.createElement('a');
-                (h.href = s.url),
-                  (h.textContent = s.text || s.name),
-                  h.classList.add('footer-a'),
-                  d.append(h),
-                  e.append(d);
-              })
-            : n.adress &&
-              n.adress.forEach((s) => {
-                const d = document.createElement('li');
-                (d.textContent = s.street), e.appendChild(d);
-                const h = document.createElement('li');
-                (h.textContent = s.town), e.appendChild(h);
-                const E = document.createElement('li'),
-                  f = document.createElement('a');
-                (f.href = s.url),
-                  (f.textContent = s.findUs),
-                  f.classList.add('footer-afind'),
-                  E.appendChild(f),
-                  e.appendChild(E);
-              }),
-          m.append(e),
-          c.append(m);
-      }),
-      l.append(c);
-    const u = document.createElement('span');
-    u.classList.add('footer-logo-p'), l.append(u);
-    const r = document.createElement('img');
-    (r.src = p.footer.logo), (r.alt = 'Kino Bio Logo'), r.classList.add('footer-logo'), u.append(r);
-    const a = document.createElement('p');
-    (a.textContent = p.footer.text), a.classList.add('footer-logotext'), u.append(a);
-  } catch (t) {
-    console.error('error', t);
-  }
-})();
-async function A() {
-  const t = await (await fetch('/data/about.json')).json();
-  return { mainHeadline: t.aboutUs, headline: t.headline, aboutPage: t.aboutPage };
+async function w() {
+  const e = await (await fetch('/data/about.json')).json();
+  return { mainHeadline: e.aboutUs, headline: e.headline, aboutPage: e.aboutPage };
 }
 async function H() {
-  const { mainHeadline: o, headline: t, aboutPage: p } = await A();
-  o && t && p && j(p, t, o);
+  const { mainHeadline: n, headline: e, aboutPage: r } = await w();
+  n && e && r && M(r, e, n);
 }
-function j(o, t, p) {
+function M(n, e, r) {
   if (!document.querySelector('.about-page')) return;
-  const l = document.querySelector('.about-main-header'),
+  const i = document.querySelector('.about-main-header'),
     c = document.createElement('h1');
-  (c.textContent = p), l.appendChild(c);
-  const u = document.querySelector('.about-header'),
-    r = document.createElement('h2');
-  (r.textContent = t), u.appendChild(r);
-  const a = document.querySelector('.section-1'),
-    n = document.createElement('h3');
-  n.textContent = o[0].section;
-  const m = document.createElement('p');
-  (m.textContent = o[0].content), a.appendChild(n), a.appendChild(m);
-  const i = document.querySelector('.section-2'),
-    e = document.createElement('h3');
-  e.textContent = o[1].section;
-  const s = document.createElement('p');
-  (s.textContent = o[1].content), i.appendChild(e), i.appendChild(s);
-  const d = document.querySelector('.section-3'),
-    h = document.createElement('h3');
-  h.textContent = o[2].section;
-  const E = document.createElement('p');
-  (E.textContent = o[2].content), d.appendChild(h), d.appendChild(E);
-  const f = document.querySelector('.section-4'),
-    y = document.createElement('h3');
-  y.textContent = o[3].section;
-  const x = document.createElement('p');
-  (x.textContent = o[3].content), f.appendChild(y), f.appendChild(x);
+  (c.textContent = r), i.appendChild(c);
+  const m = document.querySelector('.about-header'),
+    d = document.createElement('h2');
+  (d.textContent = e), m.appendChild(d);
+  const s = document.querySelector('.section-1'),
+    o = document.createElement('h3');
+  o.textContent = n[0].section;
+  const l = document.createElement('p');
+  (l.textContent = n[0].content), s.appendChild(o), s.appendChild(l);
+  const a = document.querySelector('.section-2'),
+    t = document.createElement('h3');
+  t.textContent = n[1].section;
+  const h = document.createElement('p');
+  (h.textContent = n[1].content), a.appendChild(t), a.appendChild(h);
+  const p = document.querySelector('.section-3'),
+    E = document.createElement('h3');
+  E.textContent = n[2].section;
+  const y = document.createElement('p');
+  (y.textContent = n[2].content), p.appendChild(E), p.appendChild(y);
+  const u = document.querySelector('.section-4'),
+    b = document.createElement('h3');
+  b.textContent = n[3].section;
+  const f = document.createElement('p');
+  (f.textContent = n[3].content), u.appendChild(b), u.appendChild(f);
 }
 H();
-const M = document.querySelector('.article-kids');
-M && S();
-(document.querySelector('.info') || document.querySelector('.info-modal')) && w();
+const j = document.querySelector('.article-kids');
+j && q();
+(document.querySelector('.info') || document.querySelector('.info-modal')) && A();

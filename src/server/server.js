@@ -6,7 +6,7 @@ import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
 import { headerData, getMenuLink } from './data/headerData.js';
-
+import { footerData } from './data/footerData.js';
 // ===================
 // Setting up the server
 //====================
@@ -28,10 +28,11 @@ app.set('layout', '../template');
 //Static files middleware when using npm run build (vite)
 app.use(express.static('dist'));
 
-// Header Middleware
+// Header & Footer Middleware
 app.use((req, res, next) => {
   res.locals.header = headerData.header;
   res.locals.getMenuLink = getMenuLink;
+  res.locals.footer = footerData.footer;
   next();
 });
 

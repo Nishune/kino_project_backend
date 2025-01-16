@@ -60,7 +60,43 @@
 
     <%- body %>
 
-    <footer class="footer-container"></footer>
+
+    <footer class="footer-container">
+      <div class="sections-container">
+        <!-- Kontakt sektion -->
+        <section class="footer-section">
+          <h4><%= footer.sections[0].title %></h4>
+          <ul>
+            <li>E-post: <%= footer.sections[0].contact[0].mail %></li>
+            <li>Telefonnummer: <%= footer.sections[0].contact[0].phoneNumber %></li>
+          </ul>
+        </section>
+    
+        <!-- Sociala medier sektion -->
+        <section class="footer-section">
+          <h4><%= footer.sections[1].title %></h4>
+          <ul>
+            <% footer.sections[1].links.forEach(link => { %>
+              <li>
+                <img src="<%= link.icon %>" alt="<%= link.text || link.name %> icon" class="footer-icon">
+                <a href="<%= link.url %>" class="footer-a"><%= link.text || link.name %></a>
+              </li>
+            <% }); %>
+          </ul>
+        </section>
+    
+        <!-- Adress sektion -->
+        <section class="footer-section">
+          <h4><%= footer.sections[2].title %></h4>
+          <ul>
+            <li><%= footer.sections[2].adress[0].street %></li>
+            <li><%= footer.sections[2].adress[0].town %></li>
+            <li><a href="<%= footer.sections[2].adress[0].url %>" class="footer-afind">
+              <%= footer.sections[2].adress[0].findUs %>
+            </a></li>
+          </ul>
+        </section>
+      </div>
 
     <script type="module" src="/main.js"></script>
   </body>
