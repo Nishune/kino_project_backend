@@ -1,0 +1,62 @@
+@use './lib.scss' as *;
+
+.movie-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.movie-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(155, 155, 155, 0.212);
+  transition: transform 0.3s ease;
+  height: 100%; // Säkerställer att alla kort har samma höjd
+  display: flex;
+  flex-direction: column;
+  background-color: $background-div-color;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Fyller ut hela kortet
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-image {
+  width: 100%;
+  height: 400px; // Fast höjd för alla bilder
+  object-fit: cover; // Behåller bildproportioner men fyller ut utrymmet
+}
+
+.movie-title {
+  color: $text-color-secondary;
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: center;
+  flex-grow: 1; // Tillåter titeln att växa för att fylla återstående utrymme
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .movie-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .movie-image {
+    height: 300px; // Mindre höjd på mobil
+  }
+}

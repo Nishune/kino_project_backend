@@ -2,6 +2,7 @@
 import express from 'express';
 import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
+import { marked } from 'marked';
 
 // creates new server
 const app = express();
@@ -26,6 +27,34 @@ app.get('/about', (req, res) => {
 
 app.get('/kids', (req, res) => {
   res.render('kids'); // Renderar kids.ejs
+});
+
+app.get('/movies', async (req, res) => {
+  const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
+  const moviesResponse = await response.json();
+
+  res.render('movies', { movies: moviesResponse.data });
+});
+
+app.get('/movies/:id', async (req, res) => {
+  const { id } = req.params;
+  const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`);
+  const movieResponse = await response.json();
+  console.log('API reponse: ', movieResponse);
+
+  const movie = movieResponse.data.attributes;
+  if (movie.intro) {
+    movie.introHtml = marked(movie.intro);
+  }
+  res.render('individualMovie', { movie });
+});
+
+//Route for wront page (404)
+app.use((req, res) => {
+  res.status(404).render('error', {
+    title: '404 - Sidan kunde inte hittas',
+    message: 'Sidan kunde inte hittas',
+  });
 });
 
 // Starts the server on port 5080

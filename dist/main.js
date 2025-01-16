@@ -1,48 +1,51 @@
-async function L() {
+async function k() {
   return await (await fetch('/data/header.json')).json();
 }
-function T(t) {
-  const o = document.querySelector('#navigation-menu'),
-    u = document.createElement('nav');
-  u.className = 'main-nav';
-  const r = document.createElement('div');
-  r.className = 'nav-left';
-  const d = document.createElement('a');
-  d.href = '/';
-  const p = document.createElement('img');
-  (p.src = t.header.mainHeader.logo), (p.alt = t.header.mainHeader.alt), (p.className = 'nav-logo'), d.appendChild(p);
-  const n = document.createElement('a');
-  n.href = '/';
-  const c = document.createElement('span');
-  (c.className = 'brand-name'),
-    (c.textContent = t.header.mainHeader.brandName),
-    n.appendChild(c),
-    r.appendChild(d),
-    r.appendChild(n);
+function T(o) {
+  const t = document.querySelector('#navigation-menu'),
+    f = document.createElement('nav');
+  f.className = 'main-nav';
+  const h = document.createElement('div');
+  h.className = 'nav-left';
+  const c = document.createElement('a');
+  c.href = '/';
+  const m = document.createElement('img');
+  (m.src = o.header.mainHeader.logo), (m.alt = o.header.mainHeader.alt), (m.className = 'nav-logo'), c.appendChild(m);
+  const r = document.createElement('a');
+  r.href = '/';
+  const s = document.createElement('span');
+  (s.className = 'brand-name'),
+    (s.textContent = o.header.mainHeader.brandName),
+    r.appendChild(s),
+    h.appendChild(c),
+    h.appendChild(r);
+  const n = document.createElement('div');
+  n.className = 'nav-right';
+  const l = document.createElement('button');
+  (l.className = 'hamburger-btn'), (l.innerHTML = '<i class="fas fa-bars"></i>');
   const a = document.createElement('div');
-  a.className = 'nav-right';
-  const i = document.createElement('button');
-  (i.className = 'hamburger-btn'), (i.innerHTML = '<i class="fas fa-bars"></i>');
-  const s = document.createElement('div');
-  (s.className = 'menu-overlay'), (s.style.display = 'none');
+  (a.className = 'menu-overlay'), (a.style.display = 'none');
   const e = document.createElement('div');
   e.className = 'overlay-blur';
-  const l = document.createElement('div');
-  l.className = 'overlay-logo';
-  const m = document.createElement('button');
-  (m.className = 'close-btn'), (m.innerHTML = '<i class="fas fa-times"></i>'), s.appendChild(m);
-  const h = document.createElement('img');
-  (h.src = t.header.hamburgerMenu.menuLogo),
-    (h.alt = t.header.mainHeader.alt),
-    (h.className = 'overlay-logo'),
-    l.appendChild(h),
-    s.appendChild(l);
-  const E = document.createElement('ul');
-  (E.className = 'menu-links'),
-    t.header.hamburgerMenu.menuLinks.forEach((f) => {
-      const g = document.createElement('li'),
+  const d = document.createElement('div');
+  d.className = 'overlay-logo';
+  const i = document.createElement('button');
+  (i.className = 'close-btn'), (i.innerHTML = '<i class="fas fa-times"></i>'), a.appendChild(i);
+  const p = document.createElement('img');
+  (p.src = o.header.hamburgerMenu.menuLogo),
+    (p.alt = o.header.mainHeader.alt),
+    (p.className = 'overlay-logo'),
+    d.appendChild(p),
+    a.appendChild(d);
+  const u = document.createElement('ul');
+  (u.className = 'menu-links'),
+    o.header.hamburgerMenu.menuLinks.forEach((E) => {
+      const C = document.createElement('li'),
         y = document.createElement('a');
-      switch (f.text) {
+      switch (E.text) {
+        case 'Alla filmer':
+          y.href = '/movies';
+          break;
         case 'Om oss':
           y.href = '/about';
           break;
@@ -52,370 +55,311 @@ function T(t) {
         default:
           y.href = '/';
       }
-      (y.textContent = f.text), g.appendChild(y), E.appendChild(g);
+      (y.textContent = E.text), C.appendChild(y), u.appendChild(C);
     }),
-    s.appendChild(E),
+    a.appendChild(u),
+    l.addEventListener('click', () => {
+      (a.style.display = 'block'), e.classList.add('active');
+    }),
     i.addEventListener('click', () => {
-      (s.style.display = 'block'), e.classList.add('active');
-    }),
-    m.addEventListener('click', () => {
-      (s.style.display = 'none'), e.classList.remove('active');
+      (a.style.display = 'none'), e.classList.remove('active');
     }),
     e.addEventListener('click', () => {
-      (s.style.display = 'none'), e.classList.remove('active');
+      (a.style.display = 'none'), e.classList.remove('active');
     }),
-    a.appendChild(E.cloneNode(!0)),
-    a.appendChild(i),
-    u.appendChild(r),
-    u.appendChild(a),
-    o.appendChild(u),
-    o.appendChild(s),
-    o.appendChild(e);
+    n.appendChild(u.cloneNode(!0)),
+    n.appendChild(l),
+    f.appendChild(h),
+    f.appendChild(n),
+    t.appendChild(f),
+    t.appendChild(a),
+    t.appendChild(e);
 }
 async function S() {
-  const t = await L();
-  T(t);
+  const o = await k();
+  T(o);
 }
-const b = screen.width;
-async function w() {
-  try {
-    const t = await fetch('/data/barnkalasEvent.json');
-    if (!t.ok) throw new Error('Could not fetch data');
-    const o = await t.json(),
-      u = document.querySelector('.article-party');
-    o.kalas.forEach((r) => {
-      const d = document.createElement('div');
-      d.classList.add('party-div'), u.append(d);
-      const p = document.createElement('img');
-      p.classList.add('party-img'), (p.src = r.image), (p.alt = r.imageAlt), d.append(p);
-      const n = document.createElement('div');
-      n.classList.add('party-styling'), d.append(n);
-      const c = document.createElement('h2');
-      c.classList.add('party-header'), (c.innerText = r.titel), n.append(c);
-      const a = document.createElement('p');
-      a.classList.add('party-text'), (a.innerText = r.description), n.append(a);
-      const i = document.createElement('ol');
-      i.classList.add('party-list'),
-        n.append(i),
-        r.content.forEach((l) => {
-          const m = document.createElement('li');
-          m.classList.add('party-listItem'), (m.innerText = l), i.append(m);
-        });
-      const e = document.createElement('button');
-      e.classList.add('party-button'), (e.innerText = r.book), n.append(e);
-    });
-  } catch (t) {
-    console.error(t);
-  }
-}
+const g = screen.width;
 async function q() {
   try {
-    const t = await fetch('./data/barnkalasContent.json');
-    if (!t.ok) throw new Error('Could not fetch data');
-    const o = await t.json(),
-      u = document.querySelector('.div-hero'),
-      r = document.querySelector('.article-kids');
-    o.barnkalas.forEach((d) => {
-      const p = document.createElement('img');
-      p.classList.add('kids-hero'),
-        b < 1280 ? (p.src = d.imgHero) : (p.src = d.imgHeroDesktop),
-        (p.alt = d.imgAltHero),
-        u.append(p);
-      const n = document.createElement('img');
-      n.classList.add('kids-img'),
-        b < 1280 ? (n.src = d.imgTextMobile) : (n.src = d.imgTextDesktop),
-        (n.alt = d.imgAltMobile),
-        u.append(n);
+    const o = await fetch('/data/barnkalasEvent.json');
+    if (!o.ok) throw new Error('Could not fetch data');
+    const t = await o.json(),
+      f = document.querySelector('.article-party');
+    t.kalas.forEach((h) => {
       const c = document.createElement('div');
-      c.classList.add('kids-div'), r.append(c);
-      const a = document.createElement('h2');
-      a.classList.add('kids-header'),
-        b < 1280 ? (a.innerText = d.titelMobile) : (a.innerText = d.titelDesktop),
-        c.append(a);
-      const i = document.createElement('button');
-      i.classList.add('kids-button'), (i.innerText = d.book), (i.type = 'button'), c.append(i);
-      const s = document.createElement('h1');
-      s.classList.add('kids-mainHeader'),
-        b < 1280 ? (s.innerText = d.mainTitelMobile) : (s.style.display = 'none'),
-        c.append(s);
+      c.classList.add('party-div'), f.append(c);
+      const m = document.createElement('img');
+      m.classList.add('party-img'), (m.src = h.image), (m.alt = h.imageAlt), c.append(m);
+      const r = document.createElement('div');
+      r.classList.add('party-styling'), c.append(r);
+      const s = document.createElement('h2');
+      s.classList.add('party-header'), (s.innerText = h.titel), r.append(s);
+      const n = document.createElement('p');
+      n.classList.add('party-text'), (n.innerText = h.description), r.append(n);
+      const l = document.createElement('ol');
+      l.classList.add('party-list'),
+        r.append(l),
+        h.content.forEach((d) => {
+          const i = document.createElement('li');
+          i.classList.add('party-listItem'), (i.innerText = d), l.append(i);
+        });
+      const e = document.createElement('button');
+      e.classList.add('party-button'), (e.innerText = h.book), r.append(e);
+    });
+  } catch (o) {
+    console.error(o);
+  }
+}
+async function w() {
+  try {
+    const o = await fetch('./data/barnkalasContent.json');
+    if (!o.ok) throw new Error('Could not fetch data');
+    const t = await o.json(),
+      f = document.querySelector('.div-hero'),
+      h = document.querySelector('.article-kids');
+    t.barnkalas.forEach((c) => {
+      const m = document.createElement('img');
+      m.classList.add('kids-hero'),
+        g < 1280 ? (m.src = c.imgHero) : (m.src = c.imgHeroDesktop),
+        (m.alt = c.imgAltHero),
+        f.append(m);
+      const r = document.createElement('img');
+      r.classList.add('kids-img'),
+        g < 1280 ? (r.src = c.imgTextMobile) : (r.src = c.imgTextDesktop),
+        (r.alt = c.imgAltMobile),
+        f.append(r);
+      const s = document.createElement('div');
+      s.classList.add('kids-div'), h.append(s);
+      const n = document.createElement('h2');
+      n.classList.add('kids-header'),
+        g < 1280 ? (n.innerText = c.titelMobile) : (n.innerText = c.titelDesktop),
+        s.append(n);
+      const l = document.createElement('button');
+      l.classList.add('kids-button'), (l.innerText = c.book), (l.type = 'button'), s.append(l);
+      const a = document.createElement('h1');
+      a.classList.add('kids-mainHeader'),
+        g < 1280 ? (a.innerText = c.mainTitelMobile) : (a.style.display = 'none'),
+        s.append(a);
       const e = document.createElement('p');
       e.classList.add('kids-text'),
-        b < 1280 ? (e.innerText = d.descriptionMobile) : (e.innerText = d.descriptionDesktop),
-        c.append(e);
+        g < 1280 ? (e.innerText = c.descriptionMobile) : (e.innerText = c.descriptionDesktop),
+        s.append(e);
     });
-  } catch (t) {
-    console.error(t);
+  } catch (o) {
+    console.error(o);
   }
-}
-async function H() {
-  w(), q();
 }
 async function A() {
-  const t = await fetch('/data/movies.json');
-  if (!t.ok) throw new Error(`HTTP-error! Status: ${t.status}`);
-  const o = await t.json(),
-    u = document.querySelector('.movie-container'),
-    r = document.createElement('div');
-  r.classList.add('modal'),
-    (r.innerHTML = `
-    <div class="modal-content">
-      <i class="close-button fas fa-times"></i>
-      <div class="modal-body"></div>
-    </div>
-  `),
-    document.body.appendChild(r);
-  const d = document.querySelector('.modal-body');
-  document.querySelector('.close-button').addEventListener('click', () => {
-    r.style.display = 'none';
-  }),
-    window.addEventListener('click', (n) => {
-      n.target === r && (r.style.display = 'none');
-    }),
-    o.forEach((n) => {
-      const c = document.createElement('div');
-      c.classList.add('movie-card'), u.appendChild(c);
-      const a = document.createElement('img');
-      (a.src = n.Bild), (a.alt = `Bild för ${n.Titel}`), c.appendChild(a);
-      const i = document.createElement('h2');
-      (i.textContent = n.Titel), c.appendChild(i);
-      const s = document.createElement('p');
-      (s.textContent = n.Genre),
-        c.appendChild(s),
-        i.addEventListener('click', (e) => {
-          e.stopPropagation(),
-            (d.innerHTML = `
-        <p><strong>Titel:</strong> ${n.Titel}</p>
-        <p><strong>Genre:</strong> ${n.Genre}</p>
-        <p><strong>Handling:</strong> ${n.Beskrivning}</p>
-        <p><strong>Skådespelare:</strong> ${n.Skådespelare}</p>
-        <p><strong>Språk:</strong> ${n.Språk}</p>
-        <p><strong>Rating:</strong> ${n.Rating}</p>
-        <p><strong>Speltid:</strong> ${n.Längd}</p>
-        <p><strong>Rek. ålder:</strong> ${n.RekommenderadAlder}</p>
-        <p><strong>Status:</strong> ${n.Label}</p>`),
-            (r.style.display = 'block');
-        });
-    });
+  q(), w();
 }
-async function N() {
-  const t = await fetch('data/moviesHeadline.json');
-  if (!t.ok) throw new Error(`HTTP-error! Status: ${t.status}`);
-  const o = await t.json(),
-    u = document.querySelector('.movie-headline');
-  u.textContent = o.HeadlineText;
-}
-async function M() {
-  N(), A();
-}
-async function B() {
+async function H() {
   return await (await fetch('/data/infoModal.json')).json();
 }
-async function j() {
+async function N() {
   if (!(document.querySelector('.info') || document.querySelector('.information'))) return;
-  const o = await B(),
-    u = document.querySelector('.info-modal'),
-    r = document.querySelector('.info-modal-list'),
-    d = document.querySelector('.info');
-  if (d) {
-    const c = o.sections[0],
-      a = document.querySelector('.cinema-title'),
-      i = document.querySelector('.cinema-open'),
-      s = document.createElement('button');
-    (s.innerText = o.buttons[2].text), (a.innerText = c.title), (i.innerText = c.text);
+  const t = await H(),
+    f = document.querySelector('.info-modal'),
+    h = document.querySelector('.info-modal-list'),
+    c = document.querySelector('.info');
+  if (c) {
+    const s = t.sections[0],
+      n = document.querySelector('.cinema-title'),
+      l = document.querySelector('.cinema-open'),
+      a = document.createElement('button');
+    (a.innerText = t.buttons[2].text), (n.innerText = s.title), (l.innerText = s.text);
     const e = document.querySelector('.kino-img'),
-      l = document.querySelector('.info-2'),
-      m = o.sections[1].modal,
-      h = m[3].open,
-      E = document.createElement('h3'),
-      f = document.createElement('p');
-    (E.innerText = m[3].title), (f.innerText = m[3].text), (e.src = o.kinoImg.src), (e.alt = o.kinoImg.alt);
-    const g = document.createElement('div');
-    g.appendChild(E),
-      g.appendChild(f),
-      g.setAttribute('class', 'open-div'),
-      E.setAttribute('class', 'desktop-open-title'),
-      f.setAttribute('class', 'desktop-open-paragraph'),
-      h.forEach((y) => {
-        const C = document.createElement('div'),
-          v = document.createElement('p'),
+      d = document.querySelector('.info-2'),
+      i = t.sections[1].modal,
+      p = i[3].open,
+      u = document.createElement('h3'),
+      E = document.createElement('p');
+    (u.innerText = i[3].title), (E.innerText = i[3].text), (e.src = t.kinoImg.src), (e.alt = t.kinoImg.alt);
+    const C = document.createElement('div');
+    C.appendChild(u),
+      C.appendChild(E),
+      C.setAttribute('class', 'open-div'),
+      u.setAttribute('class', 'desktop-open-title'),
+      E.setAttribute('class', 'desktop-open-paragraph'),
+      p.forEach((y) => {
+        const b = document.createElement('div'),
           x = document.createElement('p'),
-          k = document.createElement('p');
-        C.setAttribute('class', 'open-times'),
-          v.setAttribute('class', 'open-times-day'),
-          x.setAttribute('class', 'open-times-date'),
-          k.setAttribute('class', 'open-times-time'),
-          (v.innerText = y.dag),
-          (x.innerText = y.datum),
-          (k.innerText = y.tid),
-          C.appendChild(v),
-          C.appendChild(x),
-          C.appendChild(k),
-          g.appendChild(C);
+          v = document.createElement('p'),
+          L = document.createElement('p');
+        b.setAttribute('class', 'open-times'),
+          x.setAttribute('class', 'open-times-day'),
+          v.setAttribute('class', 'open-times-date'),
+          L.setAttribute('class', 'open-times-time'),
+          (x.innerText = y.dag),
+          (v.innerText = y.datum),
+          (L.innerText = y.tid),
+          b.appendChild(x),
+          b.appendChild(v),
+          b.appendChild(L),
+          C.appendChild(b);
       }),
-      l.prepend(g),
-      d.appendChild(l);
+      d.prepend(C),
+      c.appendChild(d);
   }
-  const p = o.sections[1].modal;
-  let n = 0;
-  p.forEach((c) => {
-    if (c.text == null) {
-      const a = document.createElement('p');
-      a.setAttribute('class', 'modal-title'), (a.innerText = c.title), u.prepend(a);
+  const m = t.sections[1].modal;
+  let r = 0;
+  m.forEach((s) => {
+    if (s.text == null) {
+      const n = document.createElement('p');
+      n.setAttribute('class', 'modal-title'), (n.innerText = s.title), f.prepend(n);
     } else {
-      const a = document.createElement('li'),
-        i = document.createElement('p'),
-        s = document.createElement('p'),
+      const n = document.createElement('li'),
+        l = document.createElement('p'),
+        a = document.createElement('p'),
         e = document.createElement('img');
-      a.setAttribute('class', 'modal-item-' + n),
-        n++,
-        i.setAttribute('class', 'modal-question'),
-        s.setAttribute('class', 'modal-answer'),
+      n.setAttribute('class', 'modal-item-' + r),
+        r++,
+        l.setAttribute('class', 'modal-question'),
+        a.setAttribute('class', 'modal-answer'),
         e.setAttribute('class', 'modal-open'),
-        (i.innerText = c.title),
-        (s.innerText = c.text),
-        (s.style.display = 'none'),
-        (e.src = o.buttons[0].openButton),
-        (e.alt = o.buttons[0].alt),
-        a.appendChild(e),
-        a.appendChild(i),
+        (l.innerText = s.title),
+        (a.innerText = s.text),
+        (a.style.display = 'none'),
+        (e.src = t.buttons[0].openButton),
+        (e.alt = t.buttons[0].alt),
+        n.appendChild(e),
+        n.appendChild(l),
         e.addEventListener('click', () => {
           e.classList.toggle('open-button-clicked'),
             e.className === 'modal-open open-button-clicked'
-              ? ((e.src = o.buttons[1].closeButton), (e.alt = o.buttons[1].alt), (s.style.display = ''))
-              : ((e.src = o.buttons[0].openButton), (e.alt = o.buttons[0].alt), (s.style.display = 'none'));
+              ? ((e.src = t.buttons[1].closeButton), (e.alt = t.buttons[1].alt), (a.style.display = ''))
+              : ((e.src = t.buttons[0].openButton), (e.alt = t.buttons[0].alt), (a.style.display = 'none'));
         }),
-        i.addEventListener('click', () => {
+        l.addEventListener('click', () => {
           e.classList.toggle('open-button-clicked'),
             e.className === 'modal-open open-button-clicked'
-              ? ((e.src = o.buttons[1].closeButton), (e.alt = o.buttons[1].alt), (s.style.display = ''))
-              : ((e.src = o.buttons[0].openButton), (e.alt = o.buttons[0].alt), (s.style.display = 'none'));
+              ? ((e.src = t.buttons[1].closeButton), (e.alt = t.buttons[1].alt), (a.style.display = ''))
+              : ((e.src = t.buttons[0].openButton), (e.alt = t.buttons[0].alt), (a.style.display = 'none'));
         }),
-        'open' in c
-          ? c.open.forEach((l) => {
-              const m = document.createElement('p'),
-                h = document.createElement('p'),
-                E = document.createElement('p'),
-                f = document.createElement('div');
-              f.setAttribute('class', 'open-times'),
-                m.setAttribute('class', 'open-times-day'),
-                h.setAttribute('class', 'open-times-date'),
-                E.setAttribute('class', 'open-times-time'),
-                (m.innerText = l.dag),
-                (h.innerText = l.datum),
-                (E.innerText = l.tid),
-                f.appendChild(m),
-                f.appendChild(h),
-                f.appendChild(E),
-                s.appendChild(f),
-                a.appendChild(s),
-                r.appendChild(a);
+        'open' in s
+          ? s.open.forEach((d) => {
+              const i = document.createElement('p'),
+                p = document.createElement('p'),
+                u = document.createElement('p'),
+                E = document.createElement('div');
+              E.setAttribute('class', 'open-times'),
+                i.setAttribute('class', 'open-times-day'),
+                p.setAttribute('class', 'open-times-date'),
+                u.setAttribute('class', 'open-times-time'),
+                (i.innerText = d.dag),
+                (p.innerText = d.datum),
+                (u.innerText = d.tid),
+                E.appendChild(i),
+                E.appendChild(p),
+                E.appendChild(u),
+                a.appendChild(E),
+                n.appendChild(a),
+                h.appendChild(n);
             })
-          : (a.appendChild(s), r.appendChild(a));
+          : (n.appendChild(a), h.appendChild(n));
     }
   });
 }
 (async function () {
   try {
-    const u = await (await fetch('/data/footer.json')).json(),
-      r = document.querySelector('.footer-container'),
-      d = document.createElement('div');
-    d.classList.add('sections-container'),
-      u.footer.sections.forEach((a) => {
-        const i = document.createElement('section');
-        i.classList.add('footer-section');
-        const s = document.createElement('h4');
-        (s.textContent = a.title), i.append(s);
+    const f = await (await fetch('/data/footer.json')).json(),
+      h = document.querySelector('.footer-container'),
+      c = document.createElement('div');
+    c.classList.add('sections-container'),
+      f.footer.sections.forEach((n) => {
+        const l = document.createElement('section');
+        l.classList.add('footer-section');
+        const a = document.createElement('h4');
+        (a.textContent = n.title), l.append(a);
         const e = document.createElement('ul');
-        a.contact
-          ? a.contact.forEach((l) => {
-              const m = document.createElement('li');
-              (m.textContent = `E-post: ${l.mail}`), e.append(m);
-              const h = document.createElement('li');
-              (h.textContent = `Telefonnummer: ${l.phoneNumber}`), e.append(h);
+        n.contact
+          ? n.contact.forEach((d) => {
+              const i = document.createElement('li');
+              (i.textContent = `E-post: ${d.mail}`), e.append(i);
+              const p = document.createElement('li');
+              (p.textContent = `Telefonnummer: ${d.phoneNumber}`), e.append(p);
             })
-          : a.links
-            ? a.links.forEach((l) => {
-                const m = document.createElement('li');
-                if (l.icon) {
-                  const E = document.createElement('img');
-                  (E.src = l.icon), (E.alt = `${l.text || l.name} icon`), E.classList.add('footer-icon'), m.append(E);
+          : n.links
+            ? n.links.forEach((d) => {
+                const i = document.createElement('li');
+                if (d.icon) {
+                  const u = document.createElement('img');
+                  (u.src = d.icon), (u.alt = `${d.text || d.name} icon`), u.classList.add('footer-icon'), i.append(u);
                 }
-                const h = document.createElement('a');
-                (h.href = l.url),
-                  (h.textContent = l.text || l.name),
-                  h.classList.add('footer-a'),
-                  m.append(h),
-                  e.append(m);
+                const p = document.createElement('a');
+                (p.href = d.url),
+                  (p.textContent = d.text || d.name),
+                  p.classList.add('footer-a'),
+                  i.append(p),
+                  e.append(i);
               })
-            : a.adress &&
-              a.adress.forEach((l) => {
-                const m = document.createElement('li');
-                (m.textContent = l.street), e.appendChild(m);
-                const h = document.createElement('li');
-                (h.textContent = l.town), e.appendChild(h);
-                const E = document.createElement('li'),
-                  f = document.createElement('a');
-                (f.href = l.url),
-                  (f.textContent = l.findUs),
-                  f.classList.add('footer-afind'),
-                  E.appendChild(f),
-                  e.appendChild(E);
+            : n.adress &&
+              n.adress.forEach((d) => {
+                const i = document.createElement('li');
+                (i.textContent = d.street), e.appendChild(i);
+                const p = document.createElement('li');
+                (p.textContent = d.town), e.appendChild(p);
+                const u = document.createElement('li'),
+                  E = document.createElement('a');
+                (E.href = d.url),
+                  (E.textContent = d.findUs),
+                  E.classList.add('footer-afind'),
+                  u.appendChild(E),
+                  e.appendChild(u);
               }),
-          i.append(e),
-          d.append(i);
+          l.append(e),
+          c.append(l);
       }),
-      r.append(d);
-    const p = document.createElement('span');
-    p.classList.add('footer-logo-p'), r.append(p);
-    const n = document.createElement('img');
-    (n.src = u.footer.logo), (n.alt = 'Kino Bio Logo'), n.classList.add('footer-logo'), p.append(n);
-    const c = document.createElement('p');
-    (c.textContent = u.footer.text), c.classList.add('footer-logotext'), p.append(c);
-  } catch (o) {
-    console.error('error', o);
+      h.append(c);
+    const m = document.createElement('span');
+    m.classList.add('footer-logo-p'), h.append(m);
+    const r = document.createElement('img');
+    (r.src = f.footer.logo), (r.alt = 'Kino Bio Logo'), r.classList.add('footer-logo'), m.append(r);
+    const s = document.createElement('p');
+    (s.textContent = f.footer.text), s.classList.add('footer-logotext'), m.append(s);
+  } catch (t) {
+    console.error('error', t);
   }
 })();
-async function $() {
-  const o = await (await fetch('/data/about.json')).json();
-  return { mainHeadline: o.aboutUs, headline: o.headline, aboutPage: o.aboutPage };
+async function B() {
+  const t = await (await fetch('/data/about.json')).json();
+  return { mainHeadline: t.aboutUs, headline: t.headline, aboutPage: t.aboutPage };
 }
-async function I() {
-  const { mainHeadline: t, headline: o, aboutPage: u } = await $();
-  t && o && u && P(u, o, t);
+async function j() {
+  const { mainHeadline: o, headline: t, aboutPage: f } = await B();
+  o && t && f && M(f, t, o);
 }
-function P(t, o, u) {
+function M(o, t, f) {
   if (!document.querySelector('.about-page')) return;
-  const r = document.querySelector('.about-main-header'),
-    d = document.createElement('h1');
-  (d.textContent = u), r.appendChild(d);
-  const p = document.querySelector('.about-header'),
-    n = document.createElement('h2');
-  (n.textContent = o), p.appendChild(n);
-  const c = document.querySelector('.section-1'),
-    a = document.createElement('h3');
-  a.textContent = t[0].section;
-  const i = document.createElement('p');
-  (i.textContent = t[0].content), c.appendChild(a), c.appendChild(i);
-  const s = document.querySelector('.section-2'),
-    e = document.createElement('h3');
-  e.textContent = t[1].section;
+  const h = document.querySelector('.about-main-header'),
+    c = document.createElement('h1');
+  (c.textContent = f), h.appendChild(c);
+  const m = document.querySelector('.about-header'),
+    r = document.createElement('h2');
+  (r.textContent = t), m.appendChild(r);
+  const s = document.querySelector('.section-1'),
+    n = document.createElement('h3');
+  n.textContent = o[0].section;
   const l = document.createElement('p');
-  (l.textContent = t[1].content), s.appendChild(e), s.appendChild(l);
-  const m = document.querySelector('.section-3'),
-    h = document.createElement('h3');
-  h.textContent = t[2].section;
-  const E = document.createElement('p');
-  (E.textContent = t[2].content), m.appendChild(h), m.appendChild(E);
-  const f = document.querySelector('.section-4'),
-    g = document.createElement('h3');
-  g.textContent = t[3].section;
+  (l.textContent = o[0].content), s.appendChild(n), s.appendChild(l);
+  const a = document.querySelector('.section-2'),
+    e = document.createElement('h3');
+  e.textContent = o[1].section;
+  const d = document.createElement('p');
+  (d.textContent = o[1].content), a.appendChild(e), a.appendChild(d);
+  const i = document.querySelector('.section-3'),
+    p = document.createElement('h3');
+  p.textContent = o[2].section;
+  const u = document.createElement('p');
+  (u.textContent = o[2].content), i.appendChild(p), i.appendChild(u);
+  const E = document.querySelector('.section-4'),
+    C = document.createElement('h3');
+  C.textContent = o[3].section;
   const y = document.createElement('p');
-  (y.textContent = t[3].content), f.appendChild(g), f.appendChild(y);
+  (y.textContent = o[3].content), E.appendChild(C), E.appendChild(y);
 }
-I();
+j();
 S();
-const U = document.querySelector('.article-kids');
-U && H();
-const G = document.querySelector('.movie-container');
-G && M();
-(document.querySelector('.info') || document.querySelector('.info-modal')) && j();
+const I = document.querySelector('.article-kids');
+I && A();
+(document.querySelector('.info') || document.querySelector('.info-modal')) && N();
