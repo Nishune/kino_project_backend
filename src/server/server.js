@@ -1,67 +1,55 @@
-// Import express to create server
+// ===================
+// Imports
+//====================
 import express from 'express';
 import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
+import { headerData, getMenuLink } from './data/headerData.js';
 
-// creates new server
+// ===================
+// Setting up the server
+//====================
 const app = express();
 
-// EJS-konfiguration
-app.set('view engine', 'ejs');
-app.set('views', './src/views/pages'); // where EJS files exists
-app.use(expressEjsLayouts); // Uses express layours to use layout
-app.set('layout', '../template'); // the template
+// ===================
+// EJS-Configuration
+// ===================
 
-// static files from the dist folder (after npm run build is done / made)
+app.set('view engine', 'ejs');
+app.set('views', './src/views/pages');
+app.use(expressEjsLayouts);
+app.set('layout', '../template');
+
+// =====================
+// Middleware
+// =====================
+
+//Static files middleware when using npm run build (vite)
 app.use(express.static('dist'));
 
-//Data for the header menu
-const headerData = {
-  header: {
-    mainHeader: {
-      logo: '/img/kinoLogo.png',
-      brandName: 'KINO BIO',
-      alt: 'Picture for the brands logotype',
-    },
-    hamburgerMenu: {
-      menuLogo: '/img/kinoLogoOverlay.png',
-      menuLinks: [{ text: 'Alla filmer' }, { text: 'Barnkalas' }, { text: 'Om oss' }],
-    },
-  },
-};
-
-function getMenuLink(text) {
-  switch (text) {
-    case 'Alla filmer':
-      return '/movies';
-    case 'Om oss':
-      return '/about';
-    case 'Barnkalas':
-      return '/kids';
-    default:
-      return '/';
-  }
-}
-
+// Header Middleware
 app.use((req, res, next) => {
   res.locals.header = headerData.header;
   res.locals.getMenuLink = getMenuLink;
   next();
 });
-// Routes for the differens ejs sites
+
+//=====================
+// ROUTES
+//=====================
 app.get('/', (req, res) => {
-  res.render('index'); // Renderar index.ejs
+  res.render('index');
 });
 
 app.get('/about', (req, res) => {
-  res.render('about'); // Renderar about.ejs
+  res.render('about');
 });
 
 app.get('/kids', (req, res) => {
-  res.render('kids'); // Renderar kids.ejs
+  res.render('kids');
 });
-
+// Movie routes
 app.get('/movies', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
@@ -82,7 +70,9 @@ app.get('/movies/:id', async (req, res) => {
   res.render('individualMovie', { movie });
 });
 
-//Route for wront page (404)
+// ===================
+// ERROR HANDLING
+//====================
 app.use((req, res) => {
   res.status(404).render('error', {
     title: '404 - Sidan kunde inte hittas',
@@ -90,7 +80,9 @@ app.use((req, res) => {
   });
 });
 
-// Starts the server on port 5080
+// ==================
+// Starting the server
+// ==================
 app.listen(5080, () => {
   console.log('Server running on port 5080');
 });
