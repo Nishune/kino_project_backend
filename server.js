@@ -16,6 +16,39 @@ app.set('layout', '../template'); // the template
 // static files from the dist folder (after npm run build is done / made)
 app.use(express.static('dist'));
 
+//Data for the header menu
+const headerData = {
+  header: {
+    mainHeader: {
+      logo: '/img/kinoLogo.png',
+      brandName: 'KINO BIO',
+      alt: 'Picture for the brands logotype',
+    },
+    hamburgerMenu: {
+      menuLogo: '/img/kinoLogoOverlay.png',
+      menuLinks: [{ text: 'Alla filmer' }, { text: 'Barnkalas' }, { text: 'Om oss' }],
+    },
+  },
+};
+
+function getMenuLink(text) {
+  switch (text) {
+    case 'Alla filmer':
+      return '/movies';
+    case 'Om oss':
+      return '/about';
+    case 'Barnkalas':
+      return '/kids';
+    default:
+      return '/';
+  }
+}
+
+app.use((req, res, next) => {
+  res.locals.header = headerData.header;
+  res.locals.getMenuLink = getMenuLink;
+  next();
+});
 // Routes for the differens ejs sites
 app.get('/', (req, res) => {
   res.render('index'); // Renderar index.ejs
