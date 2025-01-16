@@ -6,7 +6,8 @@
 @use './src/scss/infoModal.scss';
 @use './src/scss/footer.scss';
 @use './src/scss/movies.scss';
-
+@use './src/scss/allMovies.scss';
+@use './src/scss/individualMovies.scss';
 * {
   font-family: 'Poppins', sans-serif;
   max-width: 100%;

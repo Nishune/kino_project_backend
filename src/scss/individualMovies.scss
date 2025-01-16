@@ -1,0 +1,55 @@
+@use './lib.scss' as *;
+
+.individual-movie {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  &__title {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &__intro {
+    width: 100%;
+    max-width: 800px;
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  }
+
+  &__back-link {
+    display: inline-block;
+    margin: 2rem auto;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $text-color-secondary;
+    }
+  }
+}

@@ -1,13 +1,13 @@
-<section class="movie-headline">
-  <h1>Alla filmer</h1>
-</section>
-
 <section class="movie-container">
   <% movies.forEach(movie => { %>
     <div class="movie-card">
       <a href="/movies/<%= movie.id %>">
-        <img src="<%= movie.attributes.image.url %>" alt="Bild för <%= movie.attributes.title %>">
-        <h2><%= movie.attributes.title %></h2>
+        <div class="movie-image-container">
+          <img class="movie-image" src="<%= movie.attributes.image.url %>" alt="Bild för <%= movie.attributes.title %>">
+        </div>
+        <div class="movie-info">
+          <h2 class="movie-title"><%= movie.attributes.title %></h2>
+        </div>
       </a>
     </div>
   <% }) %>

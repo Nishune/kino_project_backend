@@ -1,11 +1,13 @@
-<h1><%= movie.title %></h1>
+<div class="individual-movie">
+  <h1 class="individual-movie__title"><%= movie.title %></h1>
 
-<div class="movie-details">
-  <img src="<%= movie.image.url %>" alt="Bild för <%= movie.title %>" />
-  <div class="movie-intro">
-    <h3>Intro</h3>
-    <%- movie.introHtml %>
+  <div class="individual-movie__details">
+    <img class="individual-movie__image" src="<%= movie.image.url %>" alt="Bild för <%= movie.title %>" />
+    <div class="individual-movie__intro">
+      <h3>Intro</h3>
+      <%- movie.introHtml %>
+    </div>
   </div>
-</div>
 
-<a href="/movies">Tillbaka till alla filmer</a>
+  <a class="individual-movie__back-link" href="/movies">Tillbaka till alla filmer</a>
+</div>
