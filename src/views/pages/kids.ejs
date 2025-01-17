@@ -1,3 +1,49 @@
-<div class="div-hero"></div>
-<article class="article-kids"></article>
-<article class="article-party"></article>
+<main>
+   
+    <div class="div-hero">
+        <% contentData.forEach((content) => { %>
+          <img 
+            class="kids-hero" 
+            src="<%= content.imgHeroDesktop %>" 
+            alt="<%= content.imgAltHero %>">
+          <img 
+            class="kids-img" 
+            src="<%= content.imgTextDesktop %>" 
+            alt="<%= content.imgAltDesktop %>">
+        <% }) %>
+      </div>
+      
+
+    <article class="article-kids">
+      <% contentData.forEach((content) => { %>
+        <div class="kids-div">
+          <h2 class="kids-header"><%= content.titelDesktop %></h2>
+          <button class="kids-button"><%= content.book %></button>
+          <p class="kids-text"><%= content.descriptionDesktop %></p>
+        </div>
+      <% }) %>
+    </article>
+  
+
+    <article class="article-party">
+      <% eventData.forEach((event) => { %>
+        <div class="party-div">
+          <img 
+            class="party-img" 
+            src="<%= event.image %>" 
+            alt="<%= event.imageAlt %>">
+          <div class="party-styling">
+            <h2 class="party-header"><%= event.titel %></h2>
+            <p class="party-text"><%= event.description %></p>
+            <ol class="party-list">
+              <% event.content.forEach((listItem) => { %>
+                <li class="party-listItem"><%= listItem %></li>
+              <% }) %>
+            </ol>
+            <button class="party-button"><%= event.book %></button>
+          </div>
+        </div>
+      <% }) %>
+    </article>
+  </main>
+  

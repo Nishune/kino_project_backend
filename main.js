@@ -1,14 +1,14 @@
 import './style.scss';
 import './src/javascript/header.js';
-import { loadkids } from './src/javascript/kids.js';
+// import { loadkids } from './src/javascript/kids.js';
 import { buildDoc } from './src/javascript/infoModal.js';
 import { updateDomWithAboutJson } from './src/javascript/about.js';
 
-const checkKids = document.querySelector('.article-kids');
+// const checkKids = document.querySelector('.article-kids');
 
-if (checkKids) {
-  loadkids();
-}
+// if (checkKids) {
+//   loadkids();
+// }
 
 // const checkMovies = document.querySelector('.movie-container');
 

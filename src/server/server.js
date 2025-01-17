@@ -7,6 +7,7 @@ import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
 import { headerData, getMenuLink } from './data/headerData.js';
 import { footerData } from './data/footerData.js';
+import { barnkalasData } from './data/kidsData.js';
 // ===================
 // Setting up the server
 //====================
@@ -48,7 +49,10 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/kids', (req, res) => {
-  res.render('kids');
+  res.render('kids', {
+    contentData: barnkalasData.content,
+    eventData: barnkalasData.events,
+  });
 });
 // Movie routes
 app.get('/movies', async (req, res) => {
