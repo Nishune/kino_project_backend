@@ -8,6 +8,7 @@ import { marked } from 'marked';
 import { headerData, getMenuLink } from './data/headerData.js';
 import { footerData } from './data/footerData.js';
 import { barnkalasData } from './data/kidsData.js';
+import { aboutData } from './data/aboutData.js';
 // ===================
 // Setting up the server
 //====================
@@ -45,7 +46,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('about');
+  res.render('about', {
+    mainHeadline: aboutData.aboutUs,
+    headline: aboutData.headline,
+    aboutPage: aboutData.aboutPage,
+  });
 });
 
 app.get('/kids', (req, res) => {

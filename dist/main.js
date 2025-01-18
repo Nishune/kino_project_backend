@@ -1,164 +1,126 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const n = document.querySelector('.hamburger-btn'),
+  const u = document.querySelector('.hamburger-btn'),
     e = document.querySelector('.close-btn'),
-    d = document.querySelector('.menu-overlay'),
-    a = document.querySelector('.overlay-blur');
-  n == null ||
-    n.addEventListener('click', () => {
-      (d.style.display = 'block'), a.classList.add('active');
+    m = document.querySelector('.menu-overlay'),
+    s = document.querySelector('.overlay-blur');
+  u == null ||
+    u.addEventListener('click', () => {
+      (m.style.display = 'block'), s.classList.add('active');
     }),
     e == null ||
       e.addEventListener('click', () => {
-        (d.style.display = 'none'), a.classList.remove('active');
+        (m.style.display = 'none'), s.classList.remove('active');
       }),
-    a == null ||
-      a.addEventListener('click', () => {
-        (d.style.display = 'none'), a.classList.remove('active');
+    s == null ||
+      s.addEventListener('click', () => {
+        (m.style.display = 'none'), s.classList.remove('active');
       });
 });
-async function g() {
+async function S() {
   return await (await fetch('/data/infoModal.json')).json();
 }
-async function v() {
+async function T() {
   if (!(document.querySelector('.info') || document.querySelector('.information'))) return;
-  const e = await g(),
-    d = document.querySelector('.info-modal'),
-    a = document.querySelector('.info-modal-list'),
-    b = document.querySelector('.info');
-  if (b) {
-    const s = e.sections[0],
-      o = document.querySelector('.cinema-title'),
-      m = document.querySelector('.cinema-open'),
-      c = document.createElement('button');
-    (c.innerText = e.buttons[2].text), (o.innerText = s.title), (m.innerText = s.text);
+  const e = await S(),
+    m = document.querySelector('.info-modal'),
+    s = document.querySelector('.info-modal-list'),
+    x = document.querySelector('.info');
+  if (x) {
+    const c = e.sections[0],
+      n = document.querySelector('.cinema-title'),
+      d = document.querySelector('.cinema-open'),
+      o = document.createElement('button');
+    (o.innerText = e.buttons[2].text), (n.innerText = c.title), (d.innerText = c.text);
     const t = document.querySelector('.kino-img'),
-      u = document.querySelector('.info-2'),
+      r = document.querySelector('.info-2'),
       l = e.sections[1].modal,
       p = l[3].open,
-      r = document.createElement('h3'),
+      a = document.createElement('h3'),
       i = document.createElement('p');
-    (r.innerText = l[3].title), (i.innerText = l[3].text), (t.src = e.kinoImg.src), (t.alt = e.kinoImg.alt);
-    const h = document.createElement('div');
-    h.appendChild(r),
-      h.appendChild(i),
-      h.setAttribute('class', 'open-div'),
-      r.setAttribute('class', 'desktop-open-title'),
+    (a.innerText = l[3].title), (i.innerText = l[3].text), (t.src = e.kinoImg.src), (t.alt = e.kinoImg.alt);
+    const y = document.createElement('div');
+    y.appendChild(a),
+      y.appendChild(i),
+      y.setAttribute('class', 'open-div'),
+      a.setAttribute('class', 'desktop-open-title'),
       i.setAttribute('class', 'desktop-open-paragraph'),
-      p.forEach((y) => {
-        const C = document.createElement('div'),
-          x = document.createElement('p'),
-          S = document.createElement('p'),
-          q = document.createElement('p');
-        C.setAttribute('class', 'open-times'),
-          x.setAttribute('class', 'open-times-day'),
-          S.setAttribute('class', 'open-times-date'),
-          q.setAttribute('class', 'open-times-time'),
-          (x.innerText = y.dag),
-          (S.innerText = y.datum),
-          (q.innerText = y.tid),
-          C.appendChild(x),
-          C.appendChild(S),
-          C.appendChild(q),
-          h.appendChild(C);
+      p.forEach((f) => {
+        const b = document.createElement('div'),
+          E = document.createElement('p'),
+          h = document.createElement('p'),
+          v = document.createElement('p');
+        b.setAttribute('class', 'open-times'),
+          E.setAttribute('class', 'open-times-day'),
+          h.setAttribute('class', 'open-times-date'),
+          v.setAttribute('class', 'open-times-time'),
+          (E.innerText = f.dag),
+          (h.innerText = f.datum),
+          (v.innerText = f.tid),
+          b.appendChild(E),
+          b.appendChild(h),
+          b.appendChild(v),
+          y.appendChild(b);
       }),
-      u.prepend(h),
-      b.appendChild(u);
+      r.prepend(y),
+      x.appendChild(r);
   }
-  const f = e.sections[1].modal;
-  let E = 0;
-  f.forEach((s) => {
-    if (s.text == null) {
-      const o = document.createElement('p');
-      o.setAttribute('class', 'modal-title'), (o.innerText = s.title), d.prepend(o);
+  const C = e.sections[1].modal;
+  let q = 0;
+  C.forEach((c) => {
+    if (c.text == null) {
+      const n = document.createElement('p');
+      n.setAttribute('class', 'modal-title'), (n.innerText = c.title), m.prepend(n);
     } else {
-      const o = document.createElement('li'),
-        m = document.createElement('p'),
-        c = document.createElement('p'),
+      const n = document.createElement('li'),
+        d = document.createElement('p'),
+        o = document.createElement('p'),
         t = document.createElement('img');
-      o.setAttribute('class', 'modal-item-' + E),
-        E++,
-        m.setAttribute('class', 'modal-question'),
-        c.setAttribute('class', 'modal-answer'),
+      n.setAttribute('class', 'modal-item-' + q),
+        q++,
+        d.setAttribute('class', 'modal-question'),
+        o.setAttribute('class', 'modal-answer'),
         t.setAttribute('class', 'modal-open'),
-        (m.innerText = s.title),
-        (c.innerText = s.text),
-        (c.style.display = 'none'),
+        (d.innerText = c.title),
+        (o.innerText = c.text),
+        (o.style.display = 'none'),
         (t.src = e.buttons[0].openButton),
         (t.alt = e.buttons[0].alt),
-        o.appendChild(t),
-        o.appendChild(m),
+        n.appendChild(t),
+        n.appendChild(d),
         t.addEventListener('click', () => {
           t.classList.toggle('open-button-clicked'),
             t.className === 'modal-open open-button-clicked'
-              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (c.style.display = ''))
-              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (c.style.display = 'none'));
+              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (o.style.display = ''))
+              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (o.style.display = 'none'));
         }),
-        m.addEventListener('click', () => {
+        d.addEventListener('click', () => {
           t.classList.toggle('open-button-clicked'),
             t.className === 'modal-open open-button-clicked'
-              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (c.style.display = ''))
-              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (c.style.display = 'none'));
+              ? ((t.src = e.buttons[1].closeButton), (t.alt = e.buttons[1].alt), (o.style.display = ''))
+              : ((t.src = e.buttons[0].openButton), (t.alt = e.buttons[0].alt), (o.style.display = 'none'));
         }),
-        'open' in s
-          ? s.open.forEach((u) => {
+        'open' in c
+          ? c.open.forEach((r) => {
               const l = document.createElement('p'),
                 p = document.createElement('p'),
-                r = document.createElement('p'),
+                a = document.createElement('p'),
                 i = document.createElement('div');
               i.setAttribute('class', 'open-times'),
                 l.setAttribute('class', 'open-times-day'),
                 p.setAttribute('class', 'open-times-date'),
-                r.setAttribute('class', 'open-times-time'),
-                (l.innerText = u.dag),
-                (p.innerText = u.datum),
-                (r.innerText = u.tid),
+                a.setAttribute('class', 'open-times-time'),
+                (l.innerText = r.dag),
+                (p.innerText = r.datum),
+                (a.innerText = r.tid),
                 i.appendChild(l),
                 i.appendChild(p),
-                i.appendChild(r),
-                c.appendChild(i),
-                o.appendChild(c),
-                a.appendChild(o);
+                i.appendChild(a),
+                o.appendChild(i),
+                n.appendChild(o),
+                s.appendChild(n);
             })
-          : (o.appendChild(c), a.appendChild(o));
+          : (n.appendChild(o), s.appendChild(n));
     }
   });
 }
-async function A() {
-  const e = await (await fetch('/data/about.json')).json();
-  return { mainHeadline: e.aboutUs, headline: e.headline, aboutPage: e.aboutPage };
-}
-async function T() {
-  const { mainHeadline: n, headline: e, aboutPage: d } = await A();
-  n && e && d && k(d, e, n);
-}
-function k(n, e, d) {
-  if (!document.querySelector('.about-page')) return;
-  const a = document.querySelector('.about-main-header'),
-    b = document.createElement('h1');
-  (b.textContent = d), a.appendChild(b);
-  const f = document.querySelector('.about-header'),
-    E = document.createElement('h2');
-  (E.textContent = e), f.appendChild(E);
-  const s = document.querySelector('.section-1'),
-    o = document.createElement('h3');
-  o.textContent = n[0].section;
-  const m = document.createElement('p');
-  (m.textContent = n[0].content), s.appendChild(o), s.appendChild(m);
-  const c = document.querySelector('.section-2'),
-    t = document.createElement('h3');
-  t.textContent = n[1].section;
-  const u = document.createElement('p');
-  (u.textContent = n[1].content), c.appendChild(t), c.appendChild(u);
-  const l = document.querySelector('.section-3'),
-    p = document.createElement('h3');
-  p.textContent = n[2].section;
-  const r = document.createElement('p');
-  (r.textContent = n[2].content), l.appendChild(p), l.appendChild(r);
-  const i = document.querySelector('.section-4'),
-    h = document.createElement('h3');
-  h.textContent = n[3].section;
-  const y = document.createElement('p');
-  (y.textContent = n[3].content), i.appendChild(h), i.appendChild(y);
-}
-T();
-(document.querySelector('.info') || document.querySelector('.info-modal')) && v();
+(document.querySelector('.info') || document.querySelector('.info-modal')) && T();
