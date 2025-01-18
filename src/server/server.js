@@ -54,6 +54,7 @@ app.get('/about', (req, res) => {
     headline: aboutData.headline,
     aboutPage: aboutData.aboutPage,
     faqData: infoModalData.sections[1].modal,
+    buttons: infoModalData.buttons,
   });
 });
 

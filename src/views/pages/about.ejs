@@ -6,17 +6,47 @@
   <section class="about-header">
     <h2><%= headline %></h2>
   </section>
-
   <% aboutPage.forEach((section, index) => { %>
     <article class="about-section section-<%= index + 1 %>">
       <h3><%= section.section %></h3>
       <p><%= section.content %></p>
     </article>
   <% }) %>
-
   <div class="information">
     <div class="info-modal">
-      <ul class="info-modal-list"></ul>
+      <ul class="info-modal-list">
+        <% faqData.forEach((section, index) => { %>
+          <% if (!section.text) { %>
+            <p class="modal-title"><%= section.title %></p>
+          <% } else { %>
+            <li class="modal-item-<%= index %>">
+              <img 
+                class="modal-open"
+                src="<%= buttons[0].openButton %>"
+                alt="<%= buttons[0].alt %>"
+                data-close-src="<%= buttons[1].closeButton %>"
+                data-close-alt="<%= buttons[1].alt %>"
+                data-open-src="<%= buttons[0].openButton %>"
+                data-open-alt="<%= buttons[0].alt %>"
+              >
+              <p class="modal-question"><%= section.title %></p>
+
+              <div class="modal-answer" style="display: none;">
+                <p><%= section.text %></p>
+                <% if (section.open) { %>
+                  <% section.open.forEach(openTime => { %>
+                    <div class="open-times">
+                      <p class="open-times-day"><%= openTime.dag %></p>
+                      <p class="open-times-date"><%= openTime.datum %></p>
+                      <p class="open-times-time"><%= openTime.tid %></p>
+                    </div>
+                  <% }) %>
+                <% } %>
+              </div>
+            </li>
+          <% } %>
+        <% }) %>
+      </ul>
     </div>
   </div>
 </main>
