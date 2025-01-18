@@ -1,16 +1,70 @@
 <main>
   <div class="info">
     <div class="info-1">
-      <h1 class="cinema-title"></h1>
-      <p class="cinema-open"></p>
+      <h1 class="cinema-title"><%= infoData.sections[0].title %></h1>
+      <p class="cinema-open"><%= infoData.sections[0].text %></p>
+
       <div class="info-modal">
-        <ul class="info-modal-list"></ul>
+        <ul class="info-modal-list">
+          <% infoData.sections[1].modal.forEach((section, index) => { %>
+            <% if (!section.text) { %>
+              <p class="modal-title"><%= section.title %></p>
+            <% } else { %>
+              <li class="modal-item-<%= index %>">
+                <img
+                  class="modal-open"
+                  src="<%= infoData.buttons[0].openButton %>"
+                  alt="<%= infoData.buttons[0].alt %>"
+                  data-close-src="<%= infoData.buttons[1].closeButton %>"
+                  data-close-alt="<%= infoData.buttons[1].alt %>"
+                  data-open-src="<%= infoData.buttons[0].openButton %>"
+                  data-open-alt="<%= infoData.buttons[0].alt %>"
+                >
+                <p class="modal-question"><%= section.title %></p>
+                <div class="modal-answer" style="display: none;">
+                  <p><%= section.text %></p>
+                  <% if (section.open) { %>
+                    <% section.open.forEach(openTime => { %>
+                      <div class="open-times">
+                        <p class="open-times-day"><%= openTime.dag %></p>
+                        <p class="open-times-date"><%= openTime.datum %></p>
+                        <p class="open-times-time"><%= openTime.tid %></p>
+                      </div>
+                    <% }) %>
+                  <% } %>
+                </div>
+              </li>
+            <% } %>
+          <% }) %>
+        </ul>
       </div>
     </div>
+
     <div class="info-2">
-      <img class="kino-img" />
+      <% 
+        const openSection = infoData.sections[1].modal[3];
+        if (openSection) {
+      %>
+        <h3 class="desktop-open-title"><%= openSection.title %></h3>
+        <p class="desktop-open-paragraph"><%= openSection.text %></p>
+        <div class="open-div">
+          <% openSection.open.forEach(time => { %>
+            <div class="open-times">
+              <p class="open-times-day"><%= time.dag %></p>
+              <p class="open-times-date"><%= time.datum %></p>
+              <p class="open-times-time"><%= time.tid %></p>
+            </div>
+          <% }) %>
+        </div>
+      <% } %>
+      <img
+        class="kino-img"
+        src="<%= infoData.kinoImg.src %>"
+        alt="<%= infoData.kinoImg.alt %>"
+      />
     </div>
   </div>
+
   <h2 class="movie-headline"></h2>
   <div class="movie-container"></div>
 </main>

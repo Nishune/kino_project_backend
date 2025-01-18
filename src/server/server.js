@@ -9,6 +9,7 @@ import { headerData, getMenuLink } from './data/headerData.js';
 import { footerData } from './data/footerData.js';
 import { barnkalasData } from './data/kidsData.js';
 import { aboutData } from './data/aboutData.js';
+import { infoModalData } from './data/infoModalData.js';
 // ===================
 // Setting up the server
 //====================
@@ -30,7 +31,7 @@ app.set('layout', '../template');
 //Static files middleware when using npm run build (vite)
 app.use(express.static('dist'));
 
-// Header & Footer Middleware
+// Header & Footer Middleware, this is used here since header and footer are on all sites of the webpage.
 app.use((req, res, next) => {
   res.locals.header = headerData.header;
   res.locals.getMenuLink = getMenuLink;
@@ -42,7 +43,9 @@ app.use((req, res, next) => {
 // ROUTES
 //=====================
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', {
+    infoData: infoModalData,
+  });
 });
 
 app.get('/about', (req, res) => {
@@ -50,6 +53,8 @@ app.get('/about', (req, res) => {
     mainHeadline: aboutData.aboutUs,
     headline: aboutData.headline,
     aboutPage: aboutData.aboutPage,
+    faqData: infoModalData.sections[1].modal,
+    buttons: infoModalData.buttons,
   });
 });
 
