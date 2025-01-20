@@ -1,0 +1,16 @@
+@use './lib.scss' as *;
+
+.error-movie__back-link {
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $text-color-secondary;
+  }
+}

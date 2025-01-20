@@ -75,6 +75,14 @@ app.get('/movies', async (req, res) => {
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
   const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`);
+
+  if (!response.ok) {
+    return res.status(404).render('error', {
+      title: '404 - Filmen kunde inte hittas',
+      message: 'Filmen du sökte efter finns inte.',
+    });
+  }
+
   const movieResponse = await response.json();
   console.log('API reponse: ', movieResponse);
 
