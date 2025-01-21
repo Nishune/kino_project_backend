@@ -3,7 +3,6 @@
 //====================
 
 import express from 'express';
-import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
 import { readJsonFile } from './utils/filehandler.js';
