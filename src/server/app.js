@@ -1,21 +1,18 @@
 // ===================
 // Imports
 //====================
+
 import express from 'express';
 import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
-import fs from 'fs/promises';
+import { readJsonFile } from './utils/filehandler.js';
 import { getMenuLink } from './utils/menuLinks.js';
+
 // ===================
 // Setting up the server
 //====================
 const app = express();
-
-async function readJsonFile(filepath) {
-  const rawData = await fs.readFile(filepath);
-  return JSON.parse(rawData);
-}
 
 // ===================
 // EJS-Configuration
@@ -30,7 +27,6 @@ app.set('layout', '../template');
 // Middleware
 // =====================
 
-//Static files middleware when using npm run build (vite)
 app.use(express.static('dist'));
 
 // Header & Footer Middleware, this is used here since header and footer are on all sites of the webpage.
