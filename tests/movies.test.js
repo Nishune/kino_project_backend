@@ -37,3 +37,20 @@ test('Individual movie page shows correct title', async () => {
     expect(response.text).toMatch(movie.title);
   }
 });
+
+// ==================
+// Testing the error page for movie id that does not exist.
+// ==================
+
+test('Returns 404 and error page for non-existent movie ID', async () => {
+  const invalidIds = ['abc', 'xOn', '!+$']; // using this instead of numbers, since the number of movies could grow overtime.
+
+  for (const id of invalidIds) {
+    const response = await request(app).get(`/movies/${id}`).expect('Content-Type', /html/).expect(404);
+
+    expect(response.text).toMatch('404 - Filmen kunde inte hittas');
+    expect(response.text).toMatch('Filmen du sökte efter finns inte');
+    expect(response.text).toMatch('Tillbaka till startsidan');
+    expect(response.text).toMatch('href="/"');
+  }
+});
