@@ -5,15 +5,18 @@ import express from 'express';
 import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
-import { headerData, getMenuLink } from './data/headerData.js';
-import { footerData } from './data/footerData.js';
-import { barnkalasData } from './data/kidsData.js';
-import { aboutData } from './data/aboutData.js';
+import fs from 'fs/promises';
+import { getMenuLink } from './utils/menuLinks.js';
 import { infoModalData } from './data/infoModalData.js';
 // ===================
 // Setting up the server
 //====================
 const app = express();
+
+async function readJsonFile(filepath) {
+  const rawData = await fs.readFile(filepath);
+  return JSON.parse(rawData);
+}
 
 // ===================
 // EJS-Configuration
@@ -32,7 +35,9 @@ app.set('layout', '../template');
 app.use(express.static('dist'));
 
 // Header & Footer Middleware, this is used here since header and footer are on all sites of the webpage.
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const headerData = await readJsonFile('./src/server/data/header.json');
+  const footerData = await readJsonFile('./src/server/data/footer.json');
   res.locals.header = headerData.header;
   res.locals.getMenuLink = getMenuLink;
   res.locals.footer = footerData.footer;
@@ -55,7 +60,8 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', async (req, res) => {
+  const aboutData = await readJsonFile('./src/server/data/about.json');
   res.render('about', {
     mainHeadline: aboutData.aboutUs,
     headline: aboutData.headline,
@@ -65,10 +71,11 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get('/kids', (req, res) => {
+app.get('/kids', async (req, res) => {
+  const kidsData = await readJsonFile('./src/server/data/kids.json');
   res.render('kids', {
-    contentData: barnkalasData.content,
-    eventData: barnkalasData.events,
+    contentData: kidsData.content,
+    eventData: kidsData.events,
   });
 });
 // Movie routes

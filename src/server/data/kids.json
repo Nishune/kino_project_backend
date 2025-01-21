@@ -1,0 +1,45 @@
+{
+  "content": [
+    {
+      "imgHero": "./img/heroBarnkalas.png",
+      "imgHeroDesktop": "./img/heroBarnkalasDesktop.png",
+      "imgAltHero": "ballons",
+      "imgTextDesktop": "./img/heroText.png",
+      "imgAltDesktop": "barnkalas på Kino bio",
+      "imgTextMobile": "./img/KINO.png",
+      "imgAltMobile": "Kino",
+      "titelMobile": "Boka kalas idag!",
+      "titelDesktop": "Boka barnkalas idag!",
+      "book": "Boka barnkalas!",
+      "mainTitelMobile": "Barnkalas på Kino bio!",
+      "descriptionMobile": "Välkommen till barnkalas här på Kino Bio i Sandviken! Välj mellan flera olika filmer som passar perfekt för ditt barns kalas!",
+      "descriptionDesktop": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum at nibh rutrum gravida. Pellentesque tincidunt nulla et nibh finibus, in vehicula libero iaculis. Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam in sapien scelerisque, consequat metus vel, egestas dui. Nulla tempus convallis urna. Morbi nec aliquet ante, eu gravida metus. Mauris nec leo eget libero euismod efficitur."
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "image": "./img/pizzaparty.png",
+      "imageAlt": "kids on a party eating pizza",
+      "titel": "Pizzaparty!",
+      "description": "Boka kalas där barnen får en fantastisk upplevelse med nybakta pizzor från stans bästa pizzeria",
+      "content": ["Pizza", "Läsk och saft", "Specialplats för födelsebarnet", "Extraordinär filmupplevelse"],
+      "book": "Boka pizzaparty!"
+    },
+    {
+      "id": 2,
+      "image": "./img/glassparty.png",
+      "imageAlt": "icecream buffe",
+      "titel": "Glassparty!",
+      "description": "Boka kalas där barnen får en kylande upplevelse som man aldrig kommer glömma! Med glass från Sveriges bästa glassproffs!",
+      "content": [
+        "Glass i stora lass",
+        "Massor med topping",
+        "Läsk och saft",
+        "Specialplats för födelsebarnet",
+        "Extraordinär filmupplevelse"
+      ],
+      "book": "Boka glassparty!"
+    }
+  ]
+}

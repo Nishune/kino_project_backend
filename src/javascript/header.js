@@ -1,4 +1,3 @@
-// hamburger.js
 document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.querySelector('.hamburger-btn');
   const closeBtn = document.querySelector('.close-btn');
