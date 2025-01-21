@@ -1,15 +1,13 @@
 // ===================
 // Imports
 //====================
+
 import express from 'express';
-import ejs from 'ejs';
 import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
-import { headerData, getMenuLink } from './data/headerData.js';
-import { footerData } from './data/footerData.js';
-import { barnkalasData } from './data/kidsData.js';
-import { aboutData } from './data/aboutData.js';
-import { infoModalData } from './data/infoModalData.js';
+import { readJsonFile } from './utils/filehandler.js';
+import { getMenuLink } from './utils/menuLinks.js';
+
 // ===================
 // Setting up the server
 //====================
@@ -28,11 +26,12 @@ app.set('layout', '../template');
 // Middleware
 // =====================
 
-//Static files middleware when using npm run build (vite)
 app.use(express.static('dist'));
 
 // Header & Footer Middleware, this is used here since header and footer are on all sites of the webpage.
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const headerData = await readJsonFile('./src/server/data/header.json');
+  const footerData = await readJsonFile('./src/server/data/footer.json');
   res.locals.header = headerData.header;
   res.locals.getMenuLink = getMenuLink;
   res.locals.footer = footerData.footer;
@@ -45,6 +44,7 @@ app.use((req, res, next) => {
 app.get('/', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
+  const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
   const latestMovies = moviesResponse.data
     .sort((a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt))
     .slice(0, 4);
@@ -55,7 +55,9 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', async (req, res) => {
+  const aboutData = await readJsonFile('./src/server/data/about.json');
+  const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
   res.render('about', {
     mainHeadline: aboutData.aboutUs,
     headline: aboutData.headline,
@@ -65,10 +67,11 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get('/kids', (req, res) => {
+app.get('/kids', async (req, res) => {
+  const kidsData = await readJsonFile('./src/server/data/kids.json');
   res.render('kids', {
-    contentData: barnkalasData.content,
-    eventData: barnkalasData.events,
+    contentData: kidsData.content,
+    eventData: kidsData.events,
   });
 });
 // Movie routes

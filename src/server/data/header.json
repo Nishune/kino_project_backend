@@ -1,0 +1,13 @@
+{
+  "header": {
+    "mainHeader": {
+      "logo": "/img/kinoLogo.png",
+      "brandName": "KINO BIO",
+      "alt": "Picture for the brands logotype"
+    },
+    "hamburgerMenu": {
+      "menuLogo": "/img/kinoLogoOverlay.png",
+      "menuLinks": [{ "text": "Alla filmer" }, { "text": "Barnkalas" }, { "text": "Om oss" }]
+    }
+  }
+}
