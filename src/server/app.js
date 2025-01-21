@@ -84,7 +84,6 @@ app.get('/movies/:id', async (req, res) => {
   }
 
   const movieResponse = await response.json();
-  console.log('API reponse: ', movieResponse);
 
   const movie = movieResponse.data.attributes;
   if (movie.intro) {
