@@ -7,7 +7,6 @@ import expressEjsLayouts from 'express-ejs-layouts';
 import { marked } from 'marked';
 import fs from 'fs/promises';
 import { getMenuLink } from './utils/menuLinks.js';
-import { infoModalData } from './data/infoModalData.js';
 // ===================
 // Setting up the server
 //====================
@@ -50,6 +49,7 @@ app.use(async (req, res, next) => {
 app.get('/', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
+  const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
   const latestMovies = moviesResponse.data
     .sort((a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt))
     .slice(0, 4);
@@ -62,6 +62,7 @@ app.get('/', async (req, res) => {
 
 app.get('/about', async (req, res) => {
   const aboutData = await readJsonFile('./src/server/data/about.json');
+  const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
   res.render('about', {
     mainHeadline: aboutData.aboutUs,
     headline: aboutData.headline,
