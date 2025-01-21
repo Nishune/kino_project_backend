@@ -763,7 +763,6 @@ header .menu-overlay {
   overflow: hidden;
   box-shadow: 0 2px 5px #9b9b9b36;
   transition: transform 0.3s ease;
-  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: #2d2d2d;
@@ -771,7 +770,6 @@ header .menu-overlay {
 .movie-card a {
   display: flex;
   flex-direction: column;
-  height: 100%;
   text-decoration: none;
   color: inherit;
 }
@@ -780,8 +778,9 @@ header .menu-overlay {
 }
 .movie-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  max-width: 100%;
 }
 .movie-title {
   color: #a8a8a8;
@@ -789,18 +788,24 @@ header .menu-overlay {
   margin: 0;
   font-size: 1.2rem;
   text-align: center;
-  flex-grow: 1;
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .movie-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     padding: 1rem;
   }
   .movie-image {
-    height: 300px;
+    height: auto;
+    object-fit: contain;
+  }
+}
+@media screen and (max-width: 500px) {
+  .movie-container {
+    row-gap: 3rem;
+    column-gap: 2rem;
   }
 }
 .individual-movie {
