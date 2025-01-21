@@ -1,5 +1,15 @@
 @use './lib.scss' as *;
 
+.movie-headline {
+  padding: 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.allMovies-headline {
+  text-align: center;
+  font-size: 2rem;
+  margin: 4rem 0rem 2rem 0rem;
+}
 .movie-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -13,7 +23,7 @@
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(155, 155, 155, 0.212);
   transition: transform 0.3s ease;
-  height: 100%; // Säkerställer att alla kort har samma höjd
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: $background-div-color;
@@ -21,7 +31,7 @@
   a {
     display: flex;
     flex-direction: column;
-    height: 100%; // Fyller ut hela kortet
+    height: 100%;
     text-decoration: none;
     color: inherit;
   }
@@ -33,8 +43,8 @@
 
 .movie-image {
   width: 100%;
-  height: 400px; // Fast höjd för alla bilder
-  object-fit: cover; // Behåller bildproportioner men fyller ut utrymmet
+  height: 400px;
+  object-fit: cover;
 }
 
 .movie-title {
@@ -43,8 +53,7 @@
   margin: 0;
   font-size: 1.2rem;
   text-align: center;
-  flex-grow: 1; // Tillåter titeln att växa för att fylla återstående utrymme
-  display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
 }
@@ -57,6 +66,6 @@
   }
 
   .movie-image {
-    height: 300px; // Mindre höjd på mobil
+    height: 300px;
   }
 }
