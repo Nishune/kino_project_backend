@@ -42,9 +42,17 @@ app.use((req, res, next) => {
 //=====================
 // ROUTES
 //=====================
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
+  const moviesResponse = await response.json();
+
+  const latestMovies = moviesResponse.data
+    .sort((a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt))
+    .slice(0, 4);
+
   res.render('index', {
     infoData: infoModalData,
+    latestMovies: latestMovies,
   });
 });
 
