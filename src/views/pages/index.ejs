@@ -65,6 +65,21 @@
     </div>
   </div>
 
-  <h2 class="movie-headline"></h2>
-  <div class="movie-container"></div>
+<section class="latest-movies">
+  <h2 class="movie-headline">Senaste filmerna</h2>
+  <div class="movie-container">
+    <% latestMovies.forEach(movie => { %>
+    <div class="movie-card">
+      <a href="/movies/<%= movie.id %>">
+        <div class="movie-image-container">
+          <img class="movie-image" src="<%= movie.attributes.image.url %>" alt="Bild för <%= movie.attributes.title %>">
+        </div>
+        <div class="movie-info">
+          <h2 class="movie-title"><%= movie.attributes.title %></h2>
+        </div>
+      </a>
+    </div>
+   <% }) %>
+  </div>
+</section>
 </main>
