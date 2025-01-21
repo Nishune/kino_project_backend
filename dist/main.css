@@ -839,7 +839,7 @@ header .menu-overlay {
 .individual-movie__back-link:hover {
   background: #a8a8a8;
 }
-.error-movie__back-link {
+.error-homepage__back-link {
   display: inline-block;
   margin: 2rem auto;
   padding: 0.5rem 1rem;
@@ -849,7 +849,7 @@ header .menu-overlay {
   border-radius: 4px;
   transition: all 0.3s ease;
 }
-.error-movie__back-link:hover {
+.error-homepage__back-link:hover {
   background: #a8a8a8;
 }
 * {
