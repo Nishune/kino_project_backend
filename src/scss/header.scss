@@ -85,13 +85,13 @@ header {
     }
   }
   .menu-overlay {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 85%;
     height: 85vh;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -99,6 +99,11 @@ header {
     background-color: $red-color;
     overflow-y: auto;
     padding: 1rem;
+    z-index: 1000;
+
+    &.active {
+      display: flex;
+    }
 
     .overlay-logo {
       margin-top: 2rem;

@@ -7,7 +7,15 @@
     },
     "hamburgerMenu": {
       "menuLogo": "/img/kinoLogoOverlay.png",
-      "menuLinks": [{ "text": "Alla filmer" }, { "text": "Barnkalas" }, { "text": "Om oss" }]
+      "menuLinks": [
+        { "text": "Alla filmer" },
+        { "text": "Kommande filmer" },
+        { "text": "Barnkalas" },
+        { "text": "Barnbio" },
+        { "text": "Bioupplevelser" },
+        { "text": "Medlem" },
+        { "text": "Om oss" }
+      ]
     }
   }
 }

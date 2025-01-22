@@ -18,6 +18,13 @@
     display: grid;
     grid-template-rows: auto auto auto auto;
     padding: 0 0 0.5rem 1.5rem;
+
+    .modal-answer {
+      display: none;
+      &.active {
+        display: block;
+      }
+    }
     .modal-item-0 {
       grid-row: 1;
       @include listItemStyle;
@@ -37,7 +44,7 @@
       @include listItemStyle;
 
       .modal-answer {
-        color: $text-color-secondary;
+        color: $text-color-main;
       }
 
       .open-times {

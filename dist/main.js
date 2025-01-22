@@ -1,38 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const c = document.querySelector('.hamburger-btn'),
-    l = document.querySelector('.close-btn'),
-    s = document.querySelector('.menu-overlay'),
-    e = document.querySelector('.overlay-blur');
-  c == null ||
-    c.addEventListener('click', () => {
-      (s.style.display = 'block'), e.classList.add('active');
-    }),
-    l == null ||
-      l.addEventListener('click', () => {
-        (s.style.display = 'none'), e.classList.remove('active');
-      }),
-    e == null ||
-      e.addEventListener('click', () => {
-        (s.style.display = 'none'), e.classList.remove('active');
-      });
+const l = document.querySelector('.hamburger-btn'),
+  a = document.querySelector('.close-btn'),
+  o = document.querySelector('.menu-overlay'),
+  c = document.querySelector('.overlay-blur');
+l == null ||
+  l.addEventListener('click', () => {
+    o.classList.add('active'), c.classList.add('active');
+  });
+a == null ||
+  a.addEventListener('click', () => {
+    o.classList.remove('active'), c.classList.remove('active');
+  });
+c == null ||
+  c.addEventListener('click', () => {
+    o.classList.remove('active'), c.classList.remove('active');
+  });
+const n = document.querySelectorAll('.modal-open'),
+  d = document.querySelectorAll('.modal-question'),
+  i = (e, s) => {
+    e.classList.toggle('open-button-clicked'),
+      e.classList.contains('open-button-clicked')
+        ? ((e.src = e.dataset.closeSrc), (e.alt = e.dataset.closeAlt), s.classList.add('active'))
+        : ((e.src = e.dataset.openSrc), (e.alt = e.dataset.openAlt), s.classList.remove('active'));
+  };
+n.forEach((e) => {
+  const t = e.closest('li').querySelector('.modal-answer');
+  e.addEventListener('click', () => i(e, t));
 });
-document.addEventListener('DOMContentLoaded', () => {
-  const c = document.querySelectorAll('.modal-open'),
-    l = document.querySelectorAll('.modal-question'),
-    s = (e, t) => {
-      e.classList.toggle('open-button-clicked'),
-        e.classList.contains('open-button-clicked')
-          ? ((e.src = e.dataset.closeSrc), (e.alt = e.dataset.closeAlt), (t.style.display = ''))
-          : ((e.src = e.dataset.openSrc), (e.alt = e.dataset.openAlt), (t.style.display = 'none'));
-    };
-  c.forEach((e) => {
-    const o = e.closest('li').querySelector('.modal-answer');
-    e.addEventListener('click', () => s(e, o));
-  }),
-    l.forEach((e) => {
-      const t = e.closest('li'),
-        o = t.querySelector('.modal-open'),
-        n = t.querySelector('.modal-answer');
-      e.addEventListener('click', () => s(o, n));
-    });
+d.forEach((e) => {
+  const s = e.closest('li'),
+    t = s.querySelector('.modal-open'),
+    r = s.querySelector('.modal-answer');
+  e.addEventListener('click', () => i(t, r));
 });
