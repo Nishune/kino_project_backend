@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayBlur = document.querySelector('.overlay-blur');
 
   hamburgerBtn?.addEventListener('click', () => {
-    menuOverlay.style.display = 'block';
+    menuOverlay.classList.add('active');
     overlayBlur.classList.add('active');
   });
 
   closeBtn?.addEventListener('click', () => {
-    menuOverlay.style.display = 'none';
+    menuOverlay.classList.remove('active');
     overlayBlur.classList.remove('active');
   });
 
   overlayBlur?.addEventListener('click', () => {
-    menuOverlay.style.display = 'none';
+    menuOverlay.classList.remove('active');
     overlayBlur.classList.remove('active');
   });
 });

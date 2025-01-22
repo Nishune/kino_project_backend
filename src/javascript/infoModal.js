@@ -9,18 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isOpen) {
       button.src = button.dataset.closeSrc;
       button.alt = button.dataset.closeAlt;
-      answer.style.display = '';
+      answer.classList.add('active');
     } else {
       button.src = button.dataset.openSrc;
       button.alt = button.dataset.openAlt;
-      answer.style.display = 'none';
+      answer.classList.remove('active');
     }
   };
 
   modalButtons.forEach((button) => {
     const listItem = button.closest('li');
     const answer = listItem.querySelector('.modal-answer');
-
     button.addEventListener('click', () => toggleAnswer(button, answer));
   });
 
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const listItem = question.closest('li');
     const button = listItem.querySelector('.modal-open');
     const answer = listItem.querySelector('.modal-answer');
-
     question.addEventListener('click', () => toggleAnswer(button, answer));
   });
 });
