@@ -6,7 +6,12 @@ export function getMenuLink(text) {
       return '/about';
     case 'Barnkalas':
       return '/kids';
+    case 'Kommande filmer':
+    case 'Barnbio':
+    case 'Bioupplevelser':
+    case 'Medlem':
+      return '#';
     default:
-      return '/';
+      return '#';
   }
 }
