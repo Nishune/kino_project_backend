@@ -108,7 +108,7 @@ app.get('/movies/:id', async (req, res) => {
 app.use((req, res) => {
   res.status(404).render('error', {
     title: '404 - Sidan kunde inte hittas',
-    message: 'Sidan kunde inte hittas',
+    message: 'Hoppsan! Det verkar som du försökt komma åt en sida som inte finns.',
   });
 });
 

@@ -9,7 +9,7 @@ test('Returns 404 and error page for pages that does not exist.', async () => {
     const response = await request(app).get(path).expect('Content-Type', /html/).expect(404);
 
     expect(response.text).toMatch('404 - Sidan kunde inte hittas');
-    expect(response.text).toMatch('Sidan kunde inte hittas');
+    expect(response.text).toMatch('Hoppsan! Det verkar som du försökt komma åt en sida som inte finns.');
     expect(response.text).toMatch('Tillbaka till startsidan');
     expect(response.text).toMatch('href="/"');
   }
