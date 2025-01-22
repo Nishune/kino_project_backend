@@ -1,8 +1,22 @@
 @use './lib.scss' as *;
 
+.error-page {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.error-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: $text-color-secondary;
+  margin-bottom: 2rem;
+}
+
 .error-homepage__back-link {
   display: inline-block;
-  margin: 2rem auto;
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: inherit;
@@ -12,5 +26,6 @@
 
   &:hover {
     background: $text-color-secondary;
+    color: white;
   }
 }
