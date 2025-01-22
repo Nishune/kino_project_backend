@@ -46,8 +46,8 @@ app.get('/', async (req, res) => {
   const moviesResponse = await response.json();
   const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
   const latestMovies = moviesResponse.data
-    .sort((a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt))
-    .slice(0, 4);
+    .sort((a, b) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt)) //Convert the movies by pubbvlished dates to date objects with newst first.
+    .slice(0, 4); // Only takes the 4 newst movies.
 
   res.render('index', {
     infoData: infoModalData,
