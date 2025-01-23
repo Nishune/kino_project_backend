@@ -1,3 +1,8 @@
+// ========================================
+// Switch that returns URL for the implemented pages, for the others it return defult #.
+// This function is made aviable in in app.js middleware, and then used on template.ejs.
+//=========================================
+
 export function getMenuLink(text) {
   switch (text) {
     case 'Alla filmer':
@@ -6,11 +11,6 @@ export function getMenuLink(text) {
       return '/about';
     case 'Barnkalas':
       return '/kids';
-    case 'Kommande filmer':
-    case 'Barnbio':
-    case 'Bioupplevelser':
-    case 'Medlem':
-      return '#';
     default:
       return '#';
   }

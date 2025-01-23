@@ -1,16 +1,19 @@
 <main>
   <div class="info">
     <div class="info-1">
+      <%# shows the title and text from the sections array from infomodal.json, loaded from the readJsonFile in app.js %>
       <h1 class="cinema-title"><%= infoData.sections[0].title %></h1>
       <p class="cinema-open"><%= infoData.sections[0].text %></p>
 
       <div class="info-modal">
         <ul class="info-modal-list">
           <% infoData.sections[1].modal.forEach((section, index) => { %>
+            <%# checks if the section has no text, then only display the title %>
             <% if (!section.text) { %>
               <p class="modal-title"><%= section.title %></p>
+              <%# if the section has text, then create the modal with button and its content %>
             <% } else { %>
-              <li class="modal-item-<%= index %>">
+              <li class="modal-item-<%= index %>"> <%# counter that start at 0, each iterations adds a value %>
                 <img
                   class="modal-open"
                   src="<%= infoData.buttons[0].openButton %>"
@@ -23,6 +26,7 @@
                 <p class="modal-question"><%= section.title %></p>
                 <div class="modal-answer">
                   <p><%= section.text %></p>
+                  <%# If the section has the opening hours array, loop through and display day, time & date. %>
                   <% if (section.open) { %>
                     <% section.open.forEach(openTime => { %>
                       <div class="open-times">
@@ -39,12 +43,13 @@
         </ul>
       </div>
     </div>
-
+<%# Infomodal with the opening times thats always open on the webpage, modal section 4, index 3. %>
     <div class="info-2">
       <% 
         const openSection = infoData.sections[1].modal[3];
         if (openSection) {
       %>
+      <%# Loops through the opening hours array again to show the day, date & time %>
         <h3 class="desktop-open-title"><%= openSection.title %></h3>
         <p class="desktop-open-paragraph"><%= openSection.text %></p>
         <div class="open-div">
@@ -64,10 +69,11 @@
       />
     </div>
   </div>
-
+<%# Shows the 4 newst movies on homepage from API reponse %>
 <section class="latest-movies">
   <h2 class="movie-headline">Senaste filmerna</h2>
   <div class="movie-container">
+    <%# Loops through the latestMovies array to create the movie cards with img & title %>
     <% latestMovies.forEach(movie => { %>
     <div class="movie-card">
       <a href="/movies/<%= movie.id %>">

@@ -1,6 +1,6 @@
-// ===================
+// ========================================
 // Imports
-//====================
+//=========================================
 
 import express from 'express';
 import expressEjsLayouts from 'express-ejs-layouts';
@@ -8,27 +8,30 @@ import { marked } from 'marked';
 import { readJsonFile } from './utils/filehandler.js';
 import { getMenuLink } from './utils/menuLinks.js';
 
-// ===================
+// ========================================
 // Setting up the server
-//====================
+//=========================================
 const app = express();
 
-// ===================
+// ========================================
 // EJS-Configuration
-// ===================
+// ========================================
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views/pages');
 app.use(expressEjsLayouts);
 app.set('layout', '../template');
 
-// =====================
+// ==========================================
 // Middleware
-// =====================
+// ==========================================
 
 app.use(express.static('dist'));
 
+// =====================
 // Header & Footer Middleware, this is used here since header and footer are on all sites of the webpage.
+// =====================
+
 app.use(async (req, res, next) => {
   const headerData = await readJsonFile('./src/server/data/header.json');
   const footerData = await readJsonFile('./src/server/data/footer.json');
@@ -38,9 +41,14 @@ app.use(async (req, res, next) => {
   next();
 });
 
-//=====================
+//==========================================
 // ROUTES
+//==========================================
+
 //=====================
+// HOMEPAGE ROUTE
+//=====================
+
 app.get('/', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
@@ -55,6 +63,10 @@ app.get('/', async (req, res) => {
   });
 });
 
+//=====================
+// ABOUT PAGE ROUTE
+//=====================
+
 app.get('/about', async (req, res) => {
   const aboutData = await readJsonFile('./src/server/data/about.json');
   const infoModalData = await readJsonFile('./src/server/data/infoModal.json');
@@ -67,6 +79,10 @@ app.get('/about', async (req, res) => {
   });
 });
 
+//=====================
+// KIDS PAGE ROUTE
+//=====================
+
 app.get('/kids', async (req, res) => {
   const kidsData = await readJsonFile('./src/server/data/kids.json');
   res.render('kids', {
@@ -74,13 +90,21 @@ app.get('/kids', async (req, res) => {
     eventData: kidsData.events,
   });
 });
-// Movie routes
+
+//=====================
+// MOVIES PAGE ROUTE
+//=====================
+
 app.get('/movies', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
 
   res.render('movies', { movies: moviesResponse.data });
 });
+
+//=====================
+// INDIVIDUAL MOVIES PAGE ROUTE
+//=====================
 
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
@@ -105,6 +129,7 @@ app.get('/movies/:id', async (req, res) => {
 // ===================
 // ERROR HANDLING
 //====================
+
 app.use((req, res) => {
   res.status(404).render('error', {
     title: '404 - Sidan kunde inte hittas',

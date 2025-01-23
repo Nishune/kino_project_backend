@@ -1,6 +1,7 @@
 <section class="movies-section">
   <h2 class="allMovies-headline">Våra filmer</h2>
   <div class="movie-container">
+    <%# Loops through the movies array from the API response in movies route, creates movie-card with img,title & link %>
     <% movies.forEach(movie => { %>
       <div class="movie-card">
         <a href="/movies/<%= movie.id %>">

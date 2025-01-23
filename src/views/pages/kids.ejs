@@ -1,5 +1,5 @@
 <main>
-   
+   <%# Looping through the content array to create the img for dekstop and mobile %>
     <div class="div-hero">
         <% contentData.forEach((content) => { %>
           <img 
@@ -13,7 +13,7 @@
         <% }) %>
       </div>
       
-
+<%# loops through the content array and creates the title text, button text and the description %>
     <article class="article-kids">
       <% contentData.forEach((content) => { %>
         <div class="kids-div">
@@ -24,7 +24,7 @@
       <% }) %>
     </article>
   
-
+<%# looping through the event data and create the events with img, titles & descriptions %>
     <article class="article-party">
       <% eventData.forEach((event) => { %>
         <div class="party-div">
@@ -36,6 +36,7 @@
             <h2 class="party-header"><%= event.titel %></h2>
             <p class="party-text"><%= event.description %></p>
             <ol class="party-list">
+              <%# This loop creates the listed items in the event from the event.content array. %>
               <% event.content.forEach((listItem) => { %>
                 <li class="party-listItem"><%= listItem %></li>
               <% }) %>
