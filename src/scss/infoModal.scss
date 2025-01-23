@@ -25,6 +25,7 @@
         display: block;
       }
     }
+
     .modal-item-0 {
       grid-row: 1;
       @include listItemStyle;
@@ -32,6 +33,7 @@
     .modal-item-0:hover {
       cursor: pointer;
     }
+
     .modal-item-1 {
       grid-row: 2;
       @include listItemStyle;
@@ -39,6 +41,7 @@
     .modal-item-1:hover {
       cursor: pointer;
     }
+
     .modal-item-2 {
       grid-row: 3;
       @include listItemStyle;
@@ -49,7 +52,7 @@
 
       .open-times {
         @include dateStyling;
-        @media screen and (min-width: $screen-mini) {
+        @include breakpointMinWidth($screen-mini) {
           max-width: 400px;
         }
       }
@@ -57,6 +60,7 @@
     .modal-item-2:hover {
       cursor: pointer;
     }
+
     .modal-item-3 {
       grid-row: 4;
       @include listItemStyle;
@@ -67,7 +71,7 @@
 
       .open-times {
         @include dateStyling;
-        @media screen and (min-width: $screen-mini) {
+        @include breakpointMinWidth($screen-mini) {
           max-width: 400px;
         }
       }
@@ -75,5 +79,29 @@
     .modal-item-3:hover {
       cursor: pointer;
     }
+  }
+  .cinema-open {
+    display: none;
+    @include breakpointMinWidth($screen-medium) {
+      display: block;
+    }
+  }
+}
+
+.info-2 {
+  .desktop-open-title,
+  .desktop-open-paragraph,
+  .open-div {
+    display: none;
+  }
+  @include breakpointMinWidth($screen-medium) {
+    .desktop-open-title,
+    .desktop-open-paragraph,
+    .open-div {
+      display: block;
+    }
+  }
+  .kino-img {
+    display: block;
   }
 }
