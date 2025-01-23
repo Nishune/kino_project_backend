@@ -26,6 +26,10 @@ app.set('layout', '../template');
 // Middleware
 // ==========================================
 
+// =====================
+// Statoc files middleware
+// =====================
+
 app.use(express.static('dist'));
 
 // =====================
@@ -114,11 +118,13 @@ app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
   const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`);
   const moviesData = await readJsonFile('./src/server/data/movies.json');
+  const errorData = await readJsonFile('./src/server/data/error.json');
 
   if (!response.ok) {
     return res.status(404).render('error', {
-      title: '404 - Filmen kunde inte hittas',
-      message: 'Filmen du sökte efter finns inte.',
+      title: errorData.error.movieNotFound.title,
+      message: errorData.error.movieNotFound.message,
+      backLink: errorData.error.pageNotFound.backLink,
     });
   }
 
@@ -135,13 +141,15 @@ app.get('/movies/:id', async (req, res) => {
 });
 
 // ===================
-// ERROR HANDLING
+// ERROR HANDLING MIDDLEWARE
 //====================
 
-app.use((req, res) => {
+app.use(async (req, res) => {
+  const errorData = await readJsonFile('./src/server/data/error.json');
   res.status(404).render('error', {
-    title: '404 - Sidan kunde inte hittas',
-    message: 'Hoppsan! Det verkar som du försökt komma åt en sida som inte finns.',
+    title: errorData.error.pageNotFound.title,
+    message: errorData.error.pageNotFound.message,
+    backLink: errorData.error.pageNotFound.backLink,
   });
 });
 

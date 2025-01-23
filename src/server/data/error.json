@@ -1,13 +1,14 @@
 {
   "error": {
-    "404": {
+    "pageNotFound": {
       "title": "404 - Sidan kunde inte hittas",
       "message": "Hoppsan! Det verkar som du försökt komma åt en sida som inte finns.",
       "backLink": "Tillbaka till startsidan"
     },
     "movieNotFound": {
       "title": "404 - Filmen kunde inte hittas",
-      "message": "Filmen du sökte efter finns inte."
+      "message": "Filmen du sökte efter finns inte.",
+      "backLink": "Tillbaka till startsidan"
     }
   }
 }
