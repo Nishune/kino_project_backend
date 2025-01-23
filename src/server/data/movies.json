@@ -1,0 +1,10 @@
+{
+  "movies": {
+    "pageTitle": "Våra filmer",
+    "imageAlt": "Bild för",
+    "individual": {
+      "introTitle": "Intro",
+      "backLink": "Tillbaka till alla filmer"
+    }
+  }
+}

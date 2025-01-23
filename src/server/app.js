@@ -98,8 +98,12 @@ app.get('/kids', async (req, res) => {
 app.get('/movies', async (req, res) => {
   const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies');
   const moviesResponse = await response.json();
+  const moviesData = await readJsonFile('./src/server/data/movies.json');
 
-  res.render('movies', { movies: moviesResponse.data });
+  res.render('movies', {
+    movies: moviesResponse.data,
+    moviesText: moviesData.movies,
+  });
 });
 
 //=====================
@@ -109,6 +113,7 @@ app.get('/movies', async (req, res) => {
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
   const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`);
+  const moviesData = await readJsonFile('./src/server/data/movies.json');
 
   if (!response.ok) {
     return res.status(404).render('error', {
@@ -118,12 +123,15 @@ app.get('/movies/:id', async (req, res) => {
   }
 
   const movieResponse = await response.json();
-
   const movie = movieResponse.data.attributes;
+
   if (movie.intro) {
     movie.introHtml = marked(movie.intro);
   }
-  res.render('individualMovie', { movie });
+  res.render('individualMovie', {
+    movie,
+    moviesText: moviesData.movies,
+  });
 });
 
 // ===================
