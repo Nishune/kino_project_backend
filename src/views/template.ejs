@@ -20,14 +20,15 @@
       <nav class="main-nav">
         <div class="nav-left">
           <a href="/">
-            <img src="<%= header.mainHeader.logo %>" alt="<%= header.mainHeader.alt %>" class="nav-logo">
+            <img src="<%= header.mainHeader.logo %>" alt="<%= header.mainHeader.alt %>" class="nav-logo"> <%# Gets the logo & alt text from data in the middleware in app.js %>
           </a>
           <a href="/">
-            <span class="brand-name"><%= header.mainHeader.brandName %></span>
+            <span class="brand-name"><%= header.mainHeader.brandName %></span> <%# Gets the brand name text from header data from middleware %>
           </a>
         </div>
         <div class="nav-right">
           <ul class="menu-links">
+            <%# Loops through the array menuLinks from headerdata, creates a link for each by using getMenuLink() in  %>
             <% header.hamburgerMenu.menuLinks.forEach(link => { %>
               <li>
                 <a href="<%= getMenuLink(link.text) %>"><%= link.text %></a>
@@ -45,9 +46,10 @@
           <i class="fas fa-times"></i>
         </button>
         <div class="overlay-logo">
-          <img src="<%= header.hamburgerMenu.menuLogo %>" alt="<%= header.mainHeader.alt %>" class="overlay-logo">
+          <img src="<%= header.hamburgerMenu.menuLogo %>" alt="<%= header.mainHeader.alt %>" class="overlay-logo"> <%# Gets the hamburger logo and alt text from headerdata middleware %>
         </div>
         <ul class="menu-links">
+          <%# Creates the diffrent menu on mobile device with the same links and text. %>
           <% header.hamburgerMenu.menuLinks.forEach(link => { %>
             <li>
               <a href="<%= getMenuLink(link.text) %>"><%= link.text %></a>
@@ -58,20 +60,21 @@
       <div class="overlay-blur"></div>
     </header>
 
-    <%- body %>
+    <%- body %> <%# Changes the page content depending on which page the user is visiting. %>
 
 
     <footer class="footer-container">
       <div class="sections-container">
       
         <section class="footer-section">
+          <%# Gets the title from footer data middleware, also displays email & phone from the first occurence in the array. %>
           <h4><%= footer.sections[0].title %></h4>
           <ul>
             <li>E-post: <%= footer.sections[0].contact[0].mail %></li>
             <li>Telefonnummer: <%= footer.sections[0].contact[0].phoneNumber %></li>
           </ul>
         </section>
-    
+        <%# Gets the footer section title from middleware, loops through social media links array to create icon, link & text %>
         <section class="footer-section">
           <h4><%= footer.sections[1].title %></h4>
           <ul>
@@ -83,7 +86,7 @@
             <% }); %>
           </ul>
         </section>
-    
+        <%# Gets title from middleware and creates adress info %>
         <section class="footer-section">
           <h4><%= footer.sections[2].title %></h4>
           <ul>
@@ -95,7 +98,7 @@
           </ul>
         </section>
       </div>
-
+<%# Gets the footer logo from footer middleware %>
       <span class="footer-logo-p">
       <img src="<%= footer.logo %>" alt="Kino Bio Logo" class="footer-logo">
       <p class="footer-logotext"><%= footer.text %></p>
