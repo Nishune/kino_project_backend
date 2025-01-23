@@ -1,8 +1,10 @@
 <div class="individual-movie">
+  <%# The title for the individual movie from the API response %>
   <h1 class="individual-movie__title"><%= movie.title %></h1>
 
   <div class="individual-movie__details">
     <img class="individual-movie__image" src="<%= movie.image.url %>" alt="Bild för <%= movie.title %>" />
+    <%# Shows the intro text for the movie, this text uses the unescaped HTML from the marked parser %>
     <div class="individual-movie__intro">
       <h3>Intro</h3>
       <%- movie.introHtml %>
