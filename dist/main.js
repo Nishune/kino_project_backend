@@ -1,34 +1,28 @@
-const l = document.querySelector('.hamburger-btn'),
-  a = document.querySelector('.close-btn'),
-  o = document.querySelector('.menu-overlay'),
-  c = document.querySelector('.overlay-blur');
+const t = document.querySelector('.hamburger-btn'),
+  l = document.querySelector('.close-btn'),
+  a = document.querySelector('.menu-overlay'),
+  s = document.querySelector('.overlay-blur');
+t == null ||
+  t.addEventListener('click', () => {
+    a.classList.add('active'), s.classList.add('active');
+  });
 l == null ||
   l.addEventListener('click', () => {
-    o.classList.add('active'), c.classList.add('active');
+    a.classList.remove('active'), s.classList.remove('active');
   });
-a == null ||
-  a.addEventListener('click', () => {
-    o.classList.remove('active'), c.classList.remove('active');
+s == null ||
+  s.addEventListener('click', () => {
+    a.classList.remove('active'), s.classList.remove('active');
   });
-c == null ||
-  c.addEventListener('click', () => {
-    o.classList.remove('active'), c.classList.remove('active');
-  });
-const n = document.querySelectorAll('.modal-open'),
-  d = document.querySelectorAll('.modal-question'),
-  i = (e, s) => {
-    e.classList.toggle('open-button-clicked'),
-      e.classList.contains('open-button-clicked')
-        ? ((e.src = e.dataset.closeSrc), (e.alt = e.dataset.closeAlt), s.classList.add('active'))
-        : ((e.src = e.dataset.openSrc), (e.alt = e.dataset.openAlt), s.classList.remove('active'));
-  };
-n.forEach((e) => {
-  const t = e.closest('li').querySelector('.modal-answer');
-  e.addEventListener('click', () => i(e, t));
-});
-d.forEach((e) => {
-  const s = e.closest('li'),
-    t = s.querySelector('.modal-open'),
-    r = s.querySelector('.modal-answer');
-  e.addEventListener('click', () => i(t, r));
+const i = document.querySelectorAll('.modal-open');
+document.querySelectorAll('.modal-question');
+const r = (e, c) => {
+  e.classList.toggle('open-button-clicked'),
+    e.classList.contains('open-button-clicked')
+      ? ((e.src = e.dataset.closeSrc), (e.alt = e.dataset.closeAlt), c.classList.add('active'))
+      : ((e.src = e.dataset.openSrc), (e.alt = e.dataset.openAlt), c.classList.remove('active'));
+};
+i.forEach((e) => {
+  const o = e.closest('li').querySelector('.modal-answer');
+  e.addEventListener('click', () => r(e, o));
 });
